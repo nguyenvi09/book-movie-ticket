@@ -114,7 +114,10 @@ function Detail(props) {
                                   ?.slice(0, 12)
                                   .map((lichChieu, index) => {
                                     return (
-                                      <NavLink to="/" key={index}>
+                                      <NavLink
+                                        to={`/checkout/${lichChieu.maLichChieu}`}
+                                        key={index}
+                                      >
                                         {moment(
                                           lichChieu.ngayChieuGioChieu
                                         ).format("hh:mm A")}

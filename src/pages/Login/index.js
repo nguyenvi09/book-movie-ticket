@@ -1,13 +1,15 @@
 import React from "react";
 import "./login.css";
 import { useFormik } from "formik";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { dangNhapAction } from "../../redux/actions/quanLyNguoiDungAction";
+import { USER_LOGIN } from "../../util/settings/config";
 
 function Login(props) {
   const dispatch = useDispatch();
   const { userLogin } = useSelector((state) => state.quanLyNguoiDungReducer);
+  const navigate = useNavigate();
 
   console.log("userLogin", userLogin);
   const formik = useFormik({
@@ -19,6 +21,9 @@ function Login(props) {
       const action = dangNhapAction(values);
       dispatch(action);
       console.log("values", values);
+      if (localStorage.getItem(USER_LOGIN)) {
+        navigate(-1);
+      }
     },
   });
 
