@@ -1,5 +1,4 @@
 import { BaseService } from "./BaseService";
-import { GROUPID } from "../util/settings/config";
 export class QuanLyNguoiDungService extends BaseService {
   constructor() {
     super();
@@ -8,6 +7,10 @@ export class QuanLyNguoiDungService extends BaseService {
   dangNhap = (thongTinDangNhap) => {
     // {taiKhoan:'',matKhau:''}
     return this.post(`/api/QuanLyNguoiDung/DangNhap`, thongTinDangNhap);
+  };
+
+  layThongTinNguoiDung = () => {
+    return this.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`);
   };
 }
 
