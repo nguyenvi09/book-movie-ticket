@@ -7,5 +7,9 @@ export const SET_CHI_TIET_PHIM = "@movie-booking/SET_CHI_TIET_PHIM";
 export const DANG_NHAP_ACTION = "@movie-booking/DANG_NHAP_ACTION";
 export const SET_CHI_TIET_PHONG_VE = "@movie-booking/SET_CHI_TIET_PHONG_VE";
 export const DAT_VE = "@movie-booking/DAT_VE";
+export const DAT_VE_HOAN_TAT = "@movie-booking/DAT_VE_HOAN_TAT";
 export const SET_THONG_TIN_NGUOI_DUNG =
   "@movie-booking/SET_THONG_TIN_NGUOI_DUNG";
+export const DISPLAY_LOADING = "@movie-booking/DISPLAY_LOADING";
+export const HIDE_LOADING = "@movie-booking/HIDE_LOADING";
+export const CHUYEN_TAB = "@movie-booking/CHUYEN_TAB";

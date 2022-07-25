@@ -238,10 +238,21 @@ const onChange = (key) => {
   console.log(key);
 };
 
-export default function (props) {
+export default function CheckoutTab(props) {
+  const { tabActive } = useSelector((state) => state.quanLyDatVeReducer);
+  const dispatch = useDispatch();
   return (
     <div className="p-5">
-      <Tabs defaultActiveKey="1" onChange={onChange}>
+      <Tabs
+        defaultActiveKey="1"
+        activeKey={tabActive}
+        onChange={(key) => {
+          dispatch({
+            type: "CHANGE_TAB_ACTIVE",
+            number: key.toString(),
+          });
+        }}
+      >
         <TabPane tab="01 CHỌN GHẾ & THANH TOÁN" key="1">
           <Checkout />
         </TabPane>

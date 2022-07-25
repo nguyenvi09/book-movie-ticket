@@ -1,6 +1,11 @@
 import { quanLyDatVeService } from "../../services/QuanLyDatVeService";
 import { ThongTinDatVe } from "../../_core/models/ThongTinDatVe";
-import { SET_CHI_TIET_PHONG_VE } from "../contants/movie-booking";
+import {
+  CHUYEN_TAB,
+  DAT_VE_HOAN_TAT,
+  SET_CHI_TIET_PHONG_VE,
+} from "../contants/movie-booking";
+import { displayLoadingAction, hideLoadingAction } from "./loadingAction";
 
 export const layChiTietPhongVeAction = (maLichChieu) => {
   return async (dispatch) => {
@@ -20,12 +25,19 @@ export const layChiTietPhongVeAction = (maLichChieu) => {
   };
 };
 
-export const datVeAction = (thongTindatVe = new ThongTinDatVe()) => {
+export const datVeAction = (thongTinDatVe = new ThongTinDatVe()) => {
   return async (dispatch) => {
     try {
-      const result = await quanLyDatVeService.datVe(thongTindatVe);
+      dispatch(displayLoadingAction);
+      const result = await quanLyDatVeService.datVe(thongTinDatVe);
       console.log(result.data.content);
+      //Đặt vé thành công -> gọi lại api load lại trang phòng vé
+      await dispatch(layChiTietPhongVeAction(thongTinDatVe.maLichChieu));
+      await dispatch({ type: DAT_VE_HOAN_TAT });
+      await dispatch(hideLoadingAction);
+      dispatch({ type: CHUYEN_TAB });
     } catch (error) {
+      dispatch(hideLoadingAction);
       console.log("error", error);
     }
   };
