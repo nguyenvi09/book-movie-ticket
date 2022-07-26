@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Carousel as Banner } from "antd";
 import { getCarouselAction } from "../../../redux/actions/carouselAction";
-import "./Carousel.css";
+import "./Carousel.scss";
 
 const contentStyle = {
   height: "600px",
@@ -18,16 +18,6 @@ function Carousel() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    //1. dispatch action = {type, data}
-    //2. dispatach hàm thì phải cài middleware
-
-    //khi gọi hàm getCarouselAction() -> return về 1 hàm
-    //hàm này truyền vào dispatch
-    // lúc này dispatch bên trong redux-thunk tạm hoãn gửi lên reducer
-    //vì chờ gọi xong api => thành công  => dispatch({
-    //   type: GET_CAROUSEL,
-    //   arrBanner: result.content,
-    // }); lên reducer
     dispatch(getCarouselAction());
   }, []);
 

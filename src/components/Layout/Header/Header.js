@@ -49,19 +49,19 @@ function Header() {
         </ul>
         <ul className="nav navbar-right" style={{ gap: "2rem" }}>
           <li>
-            <a
+            <NavLink
               style={{ color: "white", fontSize: "2rem", fontWeight: "600" }}
-              href="#"
+              to="/register"
             >
-              <span className="fa-solid fa-user" /> Sign Up
-            </a>
+              <span className="fa-solid fa-user" /> Đăng ký
+            </NavLink>
           </li>
           <li>
             <NavLink
               to="/login"
               style={{ color: "white", fontSize: "2rem", fontWeight: "600" }}
             >
-              <span className="fa-solid fa-right-to-bracket" /> Login
+              <span className="fa-solid fa-right-to-bracket" /> Đăng nhập
             </NavLink>
           </li>
         </ul>

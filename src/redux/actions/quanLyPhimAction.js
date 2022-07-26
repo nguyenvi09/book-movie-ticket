@@ -1,10 +1,10 @@
 import { GET_LIST_MOVIE } from "../contants/movie-booking";
-import { quanLyPhimService } from "../../services/QuanLyPhimService";
+import { movieManagerService } from "../../services/MovieManagerService";
 
 export const getListMovie = () => {
   return async (dispatch) => {
     try {
-      const result = await quanLyPhimService.layDanhSachPhim();
+      const result = await movieManagerService.layDanhSachPhim();
       dispatch({
         type: GET_LIST_MOVIE,
         data: result.data.content,

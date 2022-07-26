@@ -7,9 +7,6 @@ const initialState = {
 const carouselReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_CAROUSEL: {
-      // state.arrBanner = action.data;
-      // console.log(state);
-      // return { ...state };
       return { ...state, arrBanner: action.data };
     }
     default:

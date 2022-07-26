@@ -1,15 +1,13 @@
-//tổ chức services để quản lý API, các phương thức tương tác với BE
 import Axios from "axios";
 import { DOMAIN, TOKEN, USER_LOGIN } from "../util/settings/config";
 
 export class BaseService {
-  //put json về phía backend
   put = (url, model) => {
     return Axios({
       url: `${DOMAIN}${url}`,
       method: "PUT",
       data: model,
-      headers: { Authorization: "Bearer " + localStorage.getItem(TOKEN) }, //JWT
+      headers: { Authorization: "Bearer " + localStorage.getItem(TOKEN) },
     });
   };
 
@@ -23,7 +21,7 @@ export class BaseService {
           ? "Bearer " + JSON.parse(localStorage.getItem(USER_LOGIN)).accessToken
           : "",
         TokenCybersoft: TOKEN,
-      }, //JWT
+      },
     });
   };
 
@@ -32,7 +30,6 @@ export class BaseService {
       url: `${DOMAIN}${url}`,
       method: "GET",
       headers: {
-        //token yêu cầu từ backend chứng minh user đã đăng nhập rồi
         Authorization: "Bearer " + localStorage.getItem(TOKEN),
         TokenCybersoft: TOKEN,
       },
@@ -43,7 +40,7 @@ export class BaseService {
     return Axios({
       url: `${DOMAIN}${url}`,
       method: "DELETE",
-      headers: { Authorization: "Bearer " + localStorage.getItem(TOKEN) }, //token yêu cầu từ backend chứng minh user đã đăng nhập rồi
+      headers: { Authorization: "Bearer " + localStorage.getItem(TOKEN) },
     });
   };
 }
