@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Slider from "react-slick";
 import styleSlick from "./MultipleRowSlick.module.css";
-import { Tabs } from "antd";
+import { AutoComplete, Tabs } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { getListMovie } from "../../../../redux/actions/quanLyPhimAction";
 import Movie from "../../../../components/Layout/Movie";
@@ -50,11 +50,10 @@ const settings = {
 };
 
 function ListMovie() {
-  const { arrMovie } = useSelector((state) => state.quanLyPhimReducer);
+  const { arrMovie } = useSelector((state) => state.movieMangerReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    //dispatch function từ redux thunk
     dispatch(getListMovie());
   }, []);
 
@@ -68,29 +67,48 @@ function ListMovie() {
     });
   };
   return (
-    <div className="container">
-      <Tabs defaultActiveKey="1" onChange={onChange}>
-        <TabPane
-          tab="Phim đang chiếu"
-          key="1"
-          onClick={() => {
-            const action = { type: SET_FILM_DANG_CHIEU };
-            dispatch(action);
+    <div
+      style={{
+        backgroundImage:
+          "url(https://static.mservice.io/img/momo-upload-api-210701105436-637607336767432408.jpg)",
+        padding: "70px 0",
+      }}
+    >
+      <div className="container">
+        <Tabs
+          defaultActiveKey="1"
+          onChange={onChange}
+          tabBarStyle={{
+            color: "white",
+            textAlign: "center",
+            zoom: 1.3,
+            margin: "auto",
+            marginBottom: "20px",
+            fontWeight: 900,
           }}
         >
-          <Slider {...settings}>{renderListMovie()}</Slider>
-        </TabPane>
-        <TabPane
-          tab="Phim sắp chiếu"
-          key="2"
-          onClick={() => {
-            const action = { type: SET_FILM_SAP_CHIEU };
-            dispatch(action);
-          }}
-        >
-          <Slider {...settings}>{renderListMovie()}</Slider>
-        </TabPane>
-      </Tabs>
+          <TabPane
+            tab="Phim đang chiếu"
+            key="1"
+            onClick={() => {
+              const action = { type: SET_FILM_DANG_CHIEU };
+              dispatch(action);
+            }}
+          >
+            <Slider {...settings}>{renderListMovie()}</Slider>
+          </TabPane>
+          <TabPane
+            tab="Phim sắp chiếu"
+            key="2"
+            onClick={() => {
+              const action = { type: SET_FILM_SAP_CHIEU };
+              dispatch(action);
+            }}
+          >
+            <Slider {...settings}>{renderListMovie()}</Slider>
+          </TabPane>
+        </Tabs>
+      </div>
     </div>
   );
 }

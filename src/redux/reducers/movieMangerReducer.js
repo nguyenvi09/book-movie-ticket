@@ -3,7 +3,7 @@ import {
   SET_CHI_TIET_PHIM,
   SET_FILM_DANG_CHIEU,
   SET_FILM_SAP_CHIEU,
-} from "../../contants/movie-booking";
+} from "../contants/movie-booking";
 
 const initialState = {
   arrMovie: [],
@@ -13,7 +13,7 @@ const initialState = {
   movieDetail: {},
 };
 
-const quanLyPhimReducer = (state = initialState, action) => {
+const movieMangerReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_LIST_MOVIE: {
       state.arrMovie = action.data;
@@ -45,4 +45,4 @@ const quanLyPhimReducer = (state = initialState, action) => {
   }
 };
 
-export default quanLyPhimReducer;
+export default movieMangerReducer;

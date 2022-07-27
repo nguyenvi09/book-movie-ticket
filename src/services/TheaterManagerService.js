@@ -1,6 +1,6 @@
 import { BaseService } from "./BaseService";
 import { GROUPID } from "../util/settings/config";
-export class QuanLyRapService extends BaseService {
+export class TheaterManagerService extends BaseService {
   constructor() {
     super();
   }
@@ -11,7 +11,7 @@ export class QuanLyRapService extends BaseService {
     );
   };
 
-  layThongTinLichChieuPhim = (maPhim) => {
+  getMovieShowtimeInfo = (maPhim) => {
     return this.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?maPhim=${maPhim}`);
   };
 
@@ -25,4 +25,4 @@ export class QuanLyRapService extends BaseService {
   };
 }
 
-export const quanLyRapService = new QuanLyRapService();
+export const theaterManagerService = new TheaterManagerService();

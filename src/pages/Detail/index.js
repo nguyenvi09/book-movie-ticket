@@ -4,21 +4,19 @@ import Footer from "../../components/Layout/Footer/Footer";
 import Header from "../../components/Layout/Header/Header";
 import { Tabs, Rate } from "antd";
 import { useSelector, useDispatch } from "react-redux";
-import { layThongTinChiTietPhim } from "../../redux/actions/quanLyRapAction";
+import { getMovieDetails } from "../../redux/actions/theaterManagerAction";
 import moment from "moment";
 import { NavLink } from "react-router-dom";
 
 const { TabPane } = Tabs;
 function Detail(props) {
-  const { movieDetail } = useSelector((state) => state.quanLyPhimReducer);
+  const { movieDetail } = useSelector((state) => state.movieMangerReducer);
   console.log(movieDetail);
   const dispatch = useDispatch();
-  //lấy mã phim từ link
   const { id } = useParams();
 
   useEffect(() => {
-    //dispatch thunk action creator
-    dispatch(layThongTinChiTietPhim(id));
+    dispatch(getMovieDetails(id));
   }, []);
   return (
     <div
@@ -29,8 +27,6 @@ function Detail(props) {
         backgroundPosition: "center",
         height: "100%",
         width: "100vw",
-        // filter: "blur(5px)",
-        // "-webkit-filter": "blur(5px)",
       }}
     >
       <Header />

@@ -1,99 +1,106 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Tabs } from "antd";
 import { NavLink } from "react-router-dom";
 import moment from "moment";
+import styles from "./tabMovieTheater.module.scss";
 const { TabPane } = Tabs;
 
-export default class Demo extends React.PureComponent {
-  state = {
-    tabPosition: "left",
-  };
-
-  changeTabPosition = (e) => {
-    this.setState({ tabPosition: e.target.value });
-  };
-
-  renderHeThongRap = () => {
-    return this.props.heThongRapChieu?.map((heThongRap, index) => {
-      let { tabPosition } = this.state;
+function TabMovieTheater(props) {
+  const renderTheaterSystem = () => {
+    return props.cinemaSystem?.map((theaterSystem, index) => {
       return (
         <TabPane
           tab={
-            <img src={heThongRap.logo} className="rounded-full" width="50" />
+            <img
+              src={theaterSystem.logo}
+              className={`rounded-full ${styles["theater__logo"]}`}
+            />
           }
           key={index}
         >
-          <Tabs tabPosition={tabPosition}>
-            {heThongRap.lstCumRap?.map((cumRap, index) => {
+          <Tabs tabPosition="left">
+            {theaterSystem.lstCumRap?.map((theaterCluster, index) => {
               return (
                 <TabPane
                   tab={
-                    <div style={{ width: "300px", display: "flex" }}>
-                      <img
-                        src="https://s3img.vcdn.vn/123phim/2018/09/ddc-dong-da-15379624326697.jpg"
-                        width="50"
-                      />{" "}
-                      <br />
-                      <div className="text-left ml-2">
-                        {cumRap.tenCumRap}
-                        <p className="text-red-200">Chi tiết</p>
+                    <div
+                      style={{
+                        width: "350px",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "3px",
+                      }}
+                    >
+                      <img src={theaterSystem.logo} width="50px" /> <br />
+                      <div style={{ fontSize: "1.7rem", fontWeight: "600" }}>
+                        {theaterCluster.tenCumRap}
                       </div>
                     </div>
                   }
                   key={index}
                 >
-                  {/*Load phim tương ứng */}
-                  {cumRap.danhSachPhim.slice(0, 4).map((phim, index) => {
-                    return (
-                      <Fragment key={index}>
-                        <div className="my-5">
-                          <div style={{ display: "flex" }}>
-                            <img
-                              style={{ height: 75, width: 75 }}
-                              src={phim.hinhAnh}
-                              alt={phim.tenPhim}
-                              onError={(e) => {
-                                e.target.onerror = null;
-                                e.target.src = "https://picsum.photos/75/75";
+                  {theaterCluster.danhSachPhim
+                    .slice(0, 4)
+                    .map((film, index) => {
+                      return (
+                        <Fragment key={index}>
+                          <div className="my-5">
+                            <div
+                              style={{
+                                display: "flex",
+                                gap: "8px",
                               }}
-                            />
-
-                            <div className="ml-2">
-                              <h1 className="text-2xl text-green-700">
-                                {phim.tenPhim}
-                              </h1>
-                              <p>{cumRap.diaChi}</p>
-                              <div
-                                style={{
-                                  display: "grid",
-                                  gap: "20px",
-                                  gridTemplateColumns:
-                                    "auto auto auto auto auto auto",
+                            >
+                              <img
+                                style={{ height: 150, width: 110 }}
+                                src={film.hinhAnh}
+                                alt={film.tenPhim}
+                                onError={(e) => {
+                                  e.target.onerror = null;
+                                  e.target.src = "https://picsum.photos/75/75";
                                 }}
-                              >
-                                {phim.lstLichChieuTheoPhim
-                                  ?.slice(0, 12)
-                                  .map((lichChieu, index) => {
-                                    return (
-                                      <NavLink
-                                        className="text-2xl text-green-400"
-                                        to={`/checkout/${lichChieu.maLichChieu}`}
-                                        key={index}
-                                      >
-                                        {moment(
-                                          lichChieu.ngayChieuGioChieu
-                                        ).format("hh:mm A")}
-                                      </NavLink>
-                                    );
-                                  })}
+                              />
+
+                              <div className="ml-2">
+                                <h1 className="text-2xl text-green-700">
+                                  {film.tenPhim}
+                                </h1>
+                                <p>{theaterCluster.diaChi}</p>
+                                <div
+                                  style={{
+                                    display: "grid",
+                                    gap: "20px",
+                                    gridTemplateColumns:
+                                      "auto auto auto auto auto auto",
+                                  }}
+                                >
+                                  {film.lstLichChieuTheoPhim
+                                    ?.slice(0, 12)
+                                    .map((showTime, index) => {
+                                      return (
+                                        <NavLink
+                                          style={{
+                                            padding: "3px",
+                                            border: "1px solid #1890ff",
+                                            borderRadius: "5px",
+                                          }}
+                                          to={`/checkout/${showTime.maLichChieu}`}
+                                          key={index}
+                                        >
+                                          {moment(
+                                            showTime.ngayChieuGioChieu
+                                          ).format("hh:mm A")}
+                                        </NavLink>
+                                      );
+                                    })}
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <hr />
-                      </Fragment>
-                    );
-                  })}
+                          <hr />
+                        </Fragment>
+                      );
+                    })}
                 </TabPane>
               );
             })}
@@ -103,12 +110,11 @@ export default class Demo extends React.PureComponent {
     });
   };
 
-  render() {
-    const { tabPosition } = this.state;
-    return (
-      <>
-        <Tabs tabPosition={tabPosition}>{this.renderHeThongRap()}</Tabs>
-      </>
-    );
-  }
+  return (
+    <>
+      <Tabs tabPosition="top">{renderTheaterSystem()}</Tabs>
+    </>
+  );
 }
+
+export default TabMovieTheater;
