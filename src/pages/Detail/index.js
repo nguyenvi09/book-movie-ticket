@@ -11,7 +11,7 @@ import { NavLink } from "react-router-dom";
 const { TabPane } = Tabs;
 function Detail(props) {
   const { movieDetail } = useSelector((state) => state.movieMangerReducer);
-  console.log(movieDetail);
+  console.log("movieDetail", movieDetail);
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -48,10 +48,15 @@ function Detail(props) {
                 padding: "20px",
                 backgroundColor: "rgba(34, 34, 34, .8)",
                 borderRadius: "20px",
+                fontSize: "1.8rem",
               }}
             >
-              <p className="display-4">{movieDetail.tenPhim}</p>
-              <p>Tình trạng: đang chiếu</p>
+              <p className="display-4" style={{ fontWeight: "700" }}>
+                {movieDetail.tenPhim}
+              </p>
+              <p>
+                Tình trạng: {movieDetail.dangChieu ? "Đang chiếu" : "Sắp chiếu"}
+              </p>
               <p>
                 Đánh giá:{" "}
                 <span>
@@ -62,13 +67,13 @@ function Detail(props) {
                   />
                 </span>
               </p>
-              <p>{movieDetail.moTa}</p>
+              <p>Mô tả: {movieDetail.moTa}</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="container bg-light p-3">
+      <div className="container bg-light" style={{ borderRadius: "20px" }}>
         <Tabs defaultActiveKey="1">
           <TabPane tab="Lịch chiếu" key="1">
             <Tabs tabPosition={"left"}>
@@ -79,31 +84,50 @@ function Detail(props) {
                       <div>
                         <img
                           src={item.logo}
-                          width="50"
-                          height="50"
+                          width="60"
+                          height="60"
                           alt={item.logo}
                         />
-                        {item.tenHeThongRap}
+                        <span
+                          style={{
+                            marginLeft: "5px",
+                            fontSize: "2rem",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          {item.tenHeThongRap}
+                        </span>
                       </div>
                     }
                     key={index}
                   >
                     {item.cumRapChieu?.map((cumRap, index) => {
                       return (
-                        <div key={index}>
-                          <div className="d-flex">
+                        <div key={index} className="mb-5">
+                          <div style={{ display: "flex", gap: "10px" }}>
                             <img
-                              style={{ width: "60px", height: "60px" }}
-                              src="https://s3img.vcdn.vn/123phim/2018/09/ddc-dong-da-15379624326697.jpg"
+                              style={{ width: "100px", height: "100px" }}
+                              src={cumRap.hinhAnh}
                             />
                             <div className="ml-3">
-                              <p>{cumRap.tenCumRap}</p>
+                              <p
+                                style={{
+                                  fontWeight: "bold",
+                                  fontSize: "2rem",
+                                  marginBottom: "0",
+                                }}
+                              >
+                                {cumRap.tenCumRap}
+                              </p>
+                              <p className="font-weight-bold">
+                                {cumRap.diaChi}
+                              </p>
                               <div
                                 style={{
                                   display: "grid",
                                   gridTemplateColumns:
                                     "auto auto  auto auto auto auto",
-                                  gap: "20px",
+                                  gap: "10px",
                                 }}
                               >
                                 {cumRap.lichChieuPhim
@@ -113,6 +137,11 @@ function Detail(props) {
                                       <NavLink
                                         to={`/checkout/${lichChieu.maLichChieu}`}
                                         key={index}
+                                        style={{
+                                          padding: "3px",
+                                          border: "1px solid #4d96ff",
+                                          borderRadius: "5px",
+                                        }}
                                       >
                                         {moment(
                                           lichChieu.ngayChieuGioChieu
@@ -130,12 +159,6 @@ function Detail(props) {
                 );
               })}
             </Tabs>
-          </TabPane>
-          <TabPane tab="Thông tin" key="2">
-            Thông tin
-          </TabPane>
-          <TabPane tab="Đánh giá" key="3">
-            Đánh giá
           </TabPane>
         </Tabs>
       </div>
