@@ -34,7 +34,7 @@ function Home(props) {
           <TabMovieTheater cinemaSystem={cinemaSystem} />
         </div>
       </div>
-      <Footer cinemaSystem={cinemaSystem} />
+      <Footer />
     </>
   );
 }

@@ -1,7 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 function Footer(props) {
-  const { cinemaSystem } = props;
+  const { cinemaSystem } = useSelector((state) => state.theaterManagerReducer);
 
   const renderCinema = () => {
     return cinemaSystem?.map((item, index) => {
@@ -34,9 +35,9 @@ function Footer(props) {
               <hr className="w-100 clearfix d-md-none" />
               <hr className="w-100 clearfix d-md-none" />
               <div className="col-md-5 col-lg-5 col-xl-5 mx-auto mt-3">
-                <h6 className="text-white text-uppercase mb-4 font-weight-bold display-4">
+                <h1 className="text-white text-uppercase mb-4 font-weight-bold">
                   Đối tác
-                </h6>
+                </h1>
                 <ul
                   style={{
                     display: "grid",
@@ -49,9 +50,9 @@ function Footer(props) {
               </div>
               <hr className="w-100 clearfix d-md-none" />
               <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                <h6 className="text-uppercase mb-4 font-weight-bold text-white display-4">
+                <h1 className="text-uppercase mb-4 font-weight-bold text-white">
                   Liên hệ
-                </h6>
+                </h1>
                 <p>
                   <i className="fas fa-home mr-3" /> New York, NY 10012, US
                 </p>
