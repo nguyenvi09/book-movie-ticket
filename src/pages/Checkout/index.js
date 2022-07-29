@@ -14,7 +14,7 @@ import { ThongTinDatVe } from "../../_core/models/ThongTinDatVe";
 import { Tabs } from "antd";
 import moment from "moment";
 import _ from "lodash";
-import { layThongTinNguoiDungAction } from "../../redux/actions/quanLyNguoiDungAction";
+import { layThongTinNguoiDungAction } from "../../redux/actions/userManagementAction";
 
 function Checkout(props) {
   const { userLogin } = useSelector((state) => state.quanLyNguoiDungReducer);
