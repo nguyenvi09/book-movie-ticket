@@ -1,4 +1,4 @@
-.ghe { /* ghế thường */
+.ghe {
     width: 35px;
     height: 35px;
     border:none;
@@ -24,7 +24,7 @@
     background-color: rgb(228, 74, 8);
   }
 
-  .gheDaDuocDat { /*ghế được chính mình đặt */
+  .gheDaDuocDat {
     background-color: rgb(246, 246, 246);
     -webkit-box-shadow: -1px 2px 18px -6px orange; 
     box-shadow: -1px 2px 18px -6px orange;
@@ -38,4 +38,15 @@
     cursor: no-drop
   }
 
-  
+  .bg-checkout{
+    background-image: url(../../../public/assets/images/bg-checkout.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+  }
+
+  .render-ticket{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 30px;
+  }

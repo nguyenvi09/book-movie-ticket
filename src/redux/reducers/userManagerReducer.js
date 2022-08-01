@@ -1,8 +1,8 @@
-import { TOKEN, USER_LOGIN } from "../../../util/settings/config";
+import { TOKEN, USER_LOGIN } from "../../util/settings/config";
 import {
   DANG_NHAP_ACTION,
   SET_THONG_TIN_NGUOI_DUNG,
-} from "../../contants/movie-booking";
+} from "../contants/movie-booking";
 
 let user = {};
 if (localStorage.getItem(USER_LOGIN)) {
@@ -14,7 +14,7 @@ const initialState = {
   thongTinNguoiDung: {},
 };
 
-const quanLyNguoiDungReducer = (state = initialState, action) => {
+const userManagerReducer = (state = initialState, action) => {
   switch (action.type) {
     case DANG_NHAP_ACTION: {
       const { data } = action;
@@ -32,4 +32,4 @@ const quanLyNguoiDungReducer = (state = initialState, action) => {
   }
 };
 
-export default quanLyNguoiDungReducer;
+export default userManagerReducer;

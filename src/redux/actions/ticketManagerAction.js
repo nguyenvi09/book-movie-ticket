@@ -1,4 +1,4 @@
-import { quanLyDatVeService } from "../../services/QuanLyDatVeService";
+import { ticketManagerService } from "../../services/TicketManagerService";
 import { ThongTinDatVe } from "../../_core/models/ThongTinDatVe";
 import {
   CHUYEN_TAB,
@@ -7,11 +7,10 @@ import {
 } from "../contants/movie-booking";
 import { displayLoadingAction, hideLoadingAction } from "./loadingAction";
 
-export const layChiTietPhongVeAction = (maLichChieu) => {
+export const getOfficeDetailAction = (maLichChieu) => {
   return async (dispatch) => {
     try {
-      const result = await quanLyDatVeService.layChiTietPhongVe(maLichChieu);
-      console.log(result);
+      const result = await ticketManagerService.layChiTietPhongVe(maLichChieu);
       if (result.status === 200) {
         dispatch({
           type: SET_CHI_TIET_PHONG_VE,
@@ -20,7 +19,6 @@ export const layChiTietPhongVeAction = (maLichChieu) => {
       }
     } catch (error) {
       console.log("error", error);
-      console.log("error", error.response?.data);
     }
   };
 };
@@ -29,10 +27,10 @@ export const datVeAction = (thongTinDatVe = new ThongTinDatVe()) => {
   return async (dispatch) => {
     try {
       dispatch(displayLoadingAction);
-      const result = await quanLyDatVeService.datVe(thongTinDatVe);
+      const result = await ticketManagerService.datVe(thongTinDatVe);
       console.log(result.data.content);
       //Đặt vé thành công -> gọi lại api load lại trang phòng vé
-      await dispatch(layChiTietPhongVeAction(thongTinDatVe.maLichChieu));
+      await dispatch(getOfficeDetailAction(thongTinDatVe.maLichChieu));
       await dispatch({ type: DAT_VE_HOAN_TAT });
       await dispatch(hideLoadingAction);
       dispatch({ type: CHUYEN_TAB });

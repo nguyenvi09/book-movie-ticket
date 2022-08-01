@@ -22,10 +22,10 @@ export const logInAction = (logInInfo) => {
   };
 };
 
-export const layThongTinNguoiDungAction = () => {
+export const getUserInfoAction = () => {
   return async (dispatch) => {
     try {
-      const result = await userManagementService.layThongTinNguoiDung();
+      const result = await userManagementService.getUserInfo();
       if (result.data.statusCode === 200) {
         dispatch({
           type: SET_THONG_TIN_NGUOI_DUNG,

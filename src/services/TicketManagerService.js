@@ -1,7 +1,7 @@
 import { BaseService } from "./BaseService";
 import { GROUPID } from "../util/settings/config";
 import { ThongTinDatVe } from "../_core/models/ThongTinDatVe";
-export class QuanLyDatVeService extends BaseService {
+export class TicketManagerService extends BaseService {
   constructor() {
     super();
   }
@@ -18,4 +18,4 @@ export class QuanLyDatVeService extends BaseService {
   };
 }
 
-export const quanLyDatVeService = new QuanLyDatVeService();
+export const ticketManagerService = new TicketManagerService();

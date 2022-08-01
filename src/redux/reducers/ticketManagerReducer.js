@@ -1,17 +1,17 @@
-import { ThongTinLichChieu } from "../../../_core/models/ThongTinPhongVe";
+import { ThongTinLichChieu } from "../../_core/models/ThongTinPhongVe";
 import {
   CHUYEN_TAB,
   DAT_VE,
   DAT_VE_HOAN_TAT,
   SET_CHI_TIET_PHONG_VE,
-} from "../../contants/movie-booking";
+} from "../contants/movie-booking";
 
 const initialState = {
   chiTietPhongVe: new ThongTinLichChieu(),
   danhSachGheDangDat: [],
   tabActive: "1",
 };
-const quanLyDatVeReducer = (state = initialState, action) => {
+const ticketManagerReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_CHI_TIET_PHONG_VE: {
       state.chiTietPhongVe = action.data;
@@ -50,4 +50,4 @@ const quanLyDatVeReducer = (state = initialState, action) => {
   }
 };
 
-export default quanLyDatVeReducer;
+export default ticketManagerReducer;
