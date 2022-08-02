@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import AppImages from "../../AppImages/AppImages";
 
 function Footer(props) {
   const { cinemaSystem } = useSelector((state) => state.theaterManagerReducer);
@@ -27,10 +28,7 @@ function Footer(props) {
           <section className>
             <div className="row">
               <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                <img
-                  src="https://cybersoft.edu.vn/wp-content/uploads/2017/03/MIN-OP1.png"
-                  alt="Cybersoft"
-                />
+                <AppImages width="50%" />
               </div>
               <hr className="w-100 clearfix d-md-none" />
               <hr className="w-100 clearfix d-md-none" />

@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import AppImages from "../../AppImages/AppImages";
 function Header() {
   return (
     <nav
@@ -9,11 +10,7 @@ function Header() {
       <div className="container-fluid">
         <div className="navbar-header">
           <NavLink className="navbar-brand" to="/">
-            <img
-              src="https://cybersoft.edu.vn/wp-content/uploads/2017/03/MIN-OP1.png"
-              alt="cybersoft logo"
-              style={{ width: "80%" }}
-            />
+            <AppImages width="35%" />
           </NavLink>
         </div>
         <ul className="nav" style={{ gap: "2rem" }}>
