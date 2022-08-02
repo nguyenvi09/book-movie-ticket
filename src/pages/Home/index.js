@@ -6,6 +6,7 @@ import Header from "../../components/Layout/Header/Header";
 import TabMovieTheater from "../../components/Layout/TabMovieTheater";
 import { layDanhSachHeThongRap } from "../../redux/actions/theaterManagerAction";
 import ListMovie from "./_components/ListMovie";
+import ModalTrailer from "./_components/ModalTrailer";
 
 function Home(props) {
   const { cinemaSystem } = useSelector((state) => state.theaterManagerReducer);
@@ -16,6 +17,7 @@ function Home(props) {
   }, []);
   return (
     <>
+      <ModalTrailer />
       <Header />
       <Carousel />
       <ListMovie />

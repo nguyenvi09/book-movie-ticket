@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Slider from "react-slick";
-import styleSlick from "./MultipleRowSlick.module.css";
-import { AutoComplete, Tabs } from "antd";
+import styleSlick from "./listMovie.module.scss";
+import { Tabs } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { getListMovie } from "../../../../redux/actions/quanLyPhimAction";
 import Movie from "../../../../components/Layout/Movie";

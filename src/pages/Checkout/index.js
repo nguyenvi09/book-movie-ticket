@@ -7,12 +7,7 @@ import {
 } from "../../redux/actions/ticketManagerAction";
 import { USER_LOGIN } from "../../util/settings/config";
 import "./checkout.scss";
-import {
-  CloseOutlined,
-  UserOutlined,
-  CheckOutlined,
-  HomeOutlined,
-} from "@ant-design/icons";
+import { CloseOutlined, UserOutlined, CheckOutlined } from "@ant-design/icons";
 import { DAT_VE } from "../../redux/contants/movie-booking";
 import { ThongTinDatVe } from "../../_core/models/ThongTinDatVe";
 import { Tabs } from "antd";

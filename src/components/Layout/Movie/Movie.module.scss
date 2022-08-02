@@ -1,0 +1,54 @@
+#card{
+    position: relative;
+    transition: all 0.5s;
+    z-index: 1;
+    &:hover{
+        img{
+
+            opacity: .2;
+        }
+        #cardName{
+            display: none;
+        }
+        #play, #btn{
+            display: block;
+            z-index: 2;
+        }
+    }
+}
+
+#play{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 99;
+    transform: translateY(-80%) translateX(-50%);
+    color: white;
+    padding: 15px;
+    border: 1px solid white;
+    border-radius: 50%;
+    display: none;
+    transition: all 5s;
+    cursor: pointer;
+    &:hover{
+        zoom: 1.1;
+    }
+}
+
+#btn{
+    font-size: 1.7rem;
+    font-weight: 800;
+    display: none;
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 0px;
+    background-color: #fb4021;
+    color: white;
+    transition: all 0.5s;
+    &:hover{
+        background-color: #a11f08;
+    }
+}
