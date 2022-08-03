@@ -16,28 +16,40 @@ function Home(props) {
     dispatch(layDanhSachHeThongRap());
   }, []);
   return (
-    <>
-      <ModalTrailer />
-      <Header />
-      <Carousel />
-      <ListMovie />
-      <div className="p-5">
-        <h1
-          style={{
-            textAlign: "center",
-            padding: "10px 0",
-            fontSize: "3rem",
-            fontWeight: "800",
-          }}
-        >
-          Lịch chiếu phim
-        </h1>
-        <div className="container">
-          <TabMovieTheater cinemaSystem={cinemaSystem} />
-        </div>
+    <div>
+      <div
+        style={{
+          position: "fixed",
+          zIndex: 9999,
+          top: "50%",
+          left: "50%",
+          transform: "translateX(-50%) translateY(-50%)",
+        }}
+      >
+        <ModalTrailer />
       </div>
-      <Footer />
-    </>
+      <>
+        <Header />
+        <Carousel />
+        <ListMovie />
+        <div className="p-5">
+          <h1
+            style={{
+              textAlign: "center",
+              padding: "10px 0",
+              fontSize: "3rem",
+              fontWeight: "800",
+            }}
+          >
+            Lịch chiếu phim
+          </h1>
+          <div className="container">
+            <TabMovieTheater cinemaSystem={cinemaSystem} />
+          </div>
+        </div>
+        <Footer />
+      </>
+    </div>
   );
 }
 

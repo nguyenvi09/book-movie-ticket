@@ -11,9 +11,11 @@ const initialState = {
   sapChieu: true,
   arrMovieDefault: [],
   movieDetail: {},
+  movieTrailer: "",
+  displayTrailer: "none",
 };
 
-const movieMangerReducer = (state = initialState, action) => {
+const movieManagerReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_LIST_MOVIE: {
       state.arrMovie = action.data;
@@ -40,9 +42,19 @@ const movieMangerReducer = (state = initialState, action) => {
       state.movieDetail = action.data;
       return { ...state };
     }
+    case "SEND_TRAILER": {
+      state.movieTrailer = action.payload.trailer;
+      state.displayTrailer = action.payload.display;
+      return { ...state };
+    }
+    case "CLOSE_MODAL_TRAILER": {
+      state.movieTrailer = "";
+      state.displayTrailer = action.display;
+      return { ...state };
+    }
     default:
       return { ...state };
   }
 };
 
-export default movieMangerReducer;
+export default movieManagerReducer;

@@ -50,7 +50,7 @@ const settings = {
 };
 
 function ListMovie() {
-  const { arrMovie } = useSelector((state) => state.movieMangerReducer);
+  const { arrMovie } = useSelector((state) => state.movieManagerReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {

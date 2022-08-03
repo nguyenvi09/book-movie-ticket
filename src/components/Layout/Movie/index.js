@@ -1,9 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Movie.module.scss";
+import { useDispatch } from "react-redux";
 function Movie(props) {
+  const dispatch = useDispatch();
   const { movie } = props;
-  console.log(movie);
   return (
     <div
       id={styles.card}
@@ -29,7 +30,15 @@ function Movie(props) {
           {movie.tenPhim}
         </p>
       </div>
-      <div id={styles.play}>
+      <div
+        id={styles.play}
+        onClick={() => {
+          dispatch({
+            type: "SEND_TRAILER",
+            payload: { trailer: movie.trailer, display: "block" },
+          });
+        }}
+      >
         <i className="fas fa-play"></i>
       </div>
       <NavLink to={`detail/${movie.maPhim}`}>
