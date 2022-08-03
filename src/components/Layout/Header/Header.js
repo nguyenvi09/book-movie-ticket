@@ -10,22 +10,22 @@ function Header() {
       <div className="container-fluid">
         <div className="navbar-header">
           <NavLink className="navbar-brand" to="/">
-            <AppImages width="35%" />
+            <AppImages width="25%" />
           </NavLink>
         </div>
         <ul className="nav" style={{ gap: "2rem" }}>
           <li className="active">
-            <a
+            <NavLink
               style={{
                 color: "white",
                 fontSize: "2rem",
                 fontWeight: "600",
                 fontWeight: "600",
               }}
-              href="#"
+              to="/"
             >
               Trang chủ
-            </a>
+            </NavLink>
           </li>
           <li>
             <a

@@ -14,7 +14,7 @@ function ModalTrailer() {
     >
       <iframe
         width="750px"
-        height="500px"
+        height="400px"
         src={movieTrailer}
         title="YouTube video player"
         frameborder="0"

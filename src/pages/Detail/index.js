@@ -10,7 +10,7 @@ import { NavLink } from "react-router-dom";
 
 const { TabPane } = Tabs;
 function Detail(props) {
-  const { movieDetail } = useSelector((state) => state.movieMangerReducer);
+  const { movieDetail } = useSelector((state) => state.movieManagerReducer);
   const dispatch = useDispatch();
   const { id } = useParams();
 
