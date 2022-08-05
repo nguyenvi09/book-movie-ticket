@@ -1,6 +1,7 @@
 import { DesktopOutlined, FileOutlined, UserOutlined } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu } from "antd";
 import React, { useState } from "react";
+import AppImages from "../../../components/AppImages/AppImages";
 const { Header, Content, Footer, Sider } = Layout;
 
 function getItem(label, key, icon, children) {
@@ -13,9 +14,10 @@ function getItem(label, key, icon, children) {
 }
 
 const items = [
-  getItem("Users", "1", <UserOutlined />),
-  getItem("Films", "2", <FileOutlined />),
-  getItem("Showtime", "3", <DesktopOutlined />),
+  getItem("Quản lý phim", "1", <FileOutlined />, [
+    getItem("Danh sách phim", "3"),
+    getItem("Thêm phim", "4"),
+  ]),
 ];
 
 const Dashboard = () => {
@@ -31,7 +33,9 @@ const Dashboard = () => {
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
       >
-        <div className="logo" />
+        <div className="ml-5 mt-5">
+          <AppImages width="50%" />
+        </div>
         <Menu
           theme="dark"
           defaultSelectedKeys={["1"]}

@@ -1,7 +1,45 @@
-import React from "react";
+import _ from "lodash";
+import React, { Fragment } from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import AppImages from "../../AppImages/AppImages";
 function Header() {
+  const { userLogin } = useSelector((state) => state.userManagerReducer);
+  const renderLogin = () => {
+    if (_.isEmpty(userLogin)) {
+      return (
+        <Fragment>
+          <li>
+            <NavLink
+              style={{ color: "white", fontSize: "2rem", fontWeight: "600" }}
+              to="/register"
+            >
+              <span className="fa-solid fa-user" /> Đăng ký
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/login"
+              style={{ color: "white", fontSize: "2rem", fontWeight: "600" }}
+            >
+              <span className="fa-solid fa-right-to-bracket" /> Đăng nhập
+            </NavLink>
+          </li>
+        </Fragment>
+      );
+    }
+
+    return (
+      <li>
+        <NavLink
+          to="/profile"
+          style={{ color: "white", fontSize: "2rem", fontWeight: "600" }}
+        >
+          <span className="fa-solid fa-user" /> {userLogin.taiKhoan}
+        </NavLink>
+      </li>
+    );
+  };
   return (
     <nav
       className="navbar navbar-inverse position-fixed w-100 pl-5 pr-5"
@@ -30,9 +68,9 @@ function Header() {
           <li>
             <a
               style={{ color: "white", fontSize: "2rem", fontWeight: "600" }}
-              href="#"
+              href="#movieSchedule"
             >
-              Blog phim ảnh{" "}
+              Lịch chiếu phim{" "}
             </a>
           </li>
           <li>
@@ -45,22 +83,7 @@ function Header() {
           </li>
         </ul>
         <ul className="nav navbar-right" style={{ gap: "2rem" }}>
-          <li>
-            <NavLink
-              style={{ color: "white", fontSize: "2rem", fontWeight: "600" }}
-              to="/register"
-            >
-              <span className="fa-solid fa-user" /> Đăng ký
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/login"
-              style={{ color: "white", fontSize: "2rem", fontWeight: "600" }}
-            >
-              <span className="fa-solid fa-right-to-bracket" /> Đăng nhập
-            </NavLink>
-          </li>
+          {renderLogin()}
         </ul>
       </div>
     </nav>

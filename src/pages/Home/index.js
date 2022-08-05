@@ -14,6 +14,7 @@ function Home(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(layDanhSachHeThongRap());
+    window.scrollTo(0, 0);
   }, []);
   return (
     <div>
@@ -34,6 +35,7 @@ function Home(props) {
         <ListMovie />
         <div className="p-5">
           <h1
+            id="movieSchedule"
             style={{
               textAlign: "center",
               padding: "10px 0",

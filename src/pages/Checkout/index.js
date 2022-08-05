@@ -7,7 +7,12 @@ import {
 } from "../../redux/actions/ticketManagerAction";
 import { USER_LOGIN } from "../../util/settings/config";
 import "./checkout.scss";
-import { CloseOutlined, UserOutlined, CheckOutlined } from "@ant-design/icons";
+import {
+  CloseOutlined,
+  UserOutlined,
+  CheckOutlined,
+  HomeOutlined,
+} from "@ant-design/icons";
 import { DAT_VE } from "../../redux/contants/movie-booking";
 import { ThongTinDatVe } from "../../_core/models/ThongTinDatVe";
 import { Tabs } from "antd";
@@ -226,9 +231,27 @@ const { TabPane } = Tabs;
 export default function CheckoutTab(props) {
   const { tabActive } = useSelector((state) => state.ticketManagerReducer);
   const dispatch = useDispatch();
+  const { userLogin } = useSelector((state) => state.userManagerReducer);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  const operation = (
+    <Fragment>
+      {!_.isEmpty(userLogin) ? (
+        <NavLink to="/profile">
+          <span className="fa-solid fa-user mr-2"></span>
+          {userLogin.taiKhoan}
+        </NavLink>
+      ) : (
+        ""
+      )}
+    </Fragment>
+  );
   return (
     <div className="p-5 bg-checkout">
       <Tabs
+        tabBarExtraContent={operation}
         tabBarStyle={{ color: "white" }}
         defaultActiveKey="1"
         activeKey={tabActive}
@@ -239,12 +262,21 @@ export default function CheckoutTab(props) {
           });
         }}
       >
-        <TabPane tab="01 CHỌN GHẾ & THANH TOÁN" key="1">
+        <TabPane tab="01 Chọn ghế & thanh toán" key="1">
           <Checkout />
         </TabPane>
-        <TabPane tab="02 KẾT QUẢ ĐẶT VÉ" key="2">
+        <TabPane tab="02 Kết quả đặt vé" key="2">
           <TicketBookingResults />
         </TabPane>
+        <TabPane
+          tab={
+            <NavLink to="/">
+              {/* <HomeOutlined /> */}
+              Trang chủ
+            </NavLink>
+          }
+          key="3"
+        ></TabPane>
       </Tabs>
     </div>
   );

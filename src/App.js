@@ -1,14 +1,13 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Loading from "./components/Layout/Loading";
-// import Dashboard from "./pages/Admin/Dashboard";
-// import Film from "./pages/Admin/Films";
-// import Showtime from "./pages/Admin/Showtime";
+import Dashboard from "./pages/Admin/Dashboard";
+import Film from "./pages/Admin/Films";
 import Checkout from "./pages/Checkout";
 import Detail from "./pages/Detail";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-
+import AdminPage from "./pages/Admin";
 function App() {
   return (
     <BrowserRouter>
@@ -22,9 +21,10 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
 
-        {/* <Route path="/admin" element={<Dashboard />} />
-        <Route path="/admin/films" element={<Film />} />
-        <Route path="/admin/showtime/:id/:tenphim" element={<Showtime />} /> */}
+        <Route path="/admin" element={<AdminPage />}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="films" element={<Film />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
