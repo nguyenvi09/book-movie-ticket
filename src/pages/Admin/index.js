@@ -1,7 +1,6 @@
 import { NavLink, Outlet, Link } from "react-router-dom";
 import { Space, Tabs } from "antd";
 import React from "react";
-const { TabPane } = Tabs;
 
 const AdminPage = () => {
   return (
@@ -10,7 +9,7 @@ const AdminPage = () => {
       <div id="sidebar-wrapper">
         <ul className="sidebar-nav">
           <li className="sidebar-brand">
-            <Link to="films">Start Bootstrap</Link>
+            <Link to="films">Danh sách phim</Link>
           </li>
           <li>
             <Link to="dashboard">Dashboard</Link>

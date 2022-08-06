@@ -3,12 +3,12 @@ import Slider from "react-slick";
 import styleSlick from "./listMovie.module.scss";
 import { Tabs } from "antd";
 import { useSelector, useDispatch } from "react-redux";
-import { getListMovie } from "../../../../redux/actions/quanLyPhimAction";
 import Movie from "../../../../components/Layout/Movie";
 import {
   SET_FILM_DANG_CHIEU,
   SET_FILM_SAP_CHIEU,
 } from "../../../../redux/contants/movie-booking";
+import { getListMovieAction } from "../../../../redux/actions/movieManagerAction";
 
 const { TabPane } = Tabs;
 
@@ -54,7 +54,7 @@ function ListMovie() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getListMovie());
+    dispatch(getListMovieAction());
   }, []);
 
   const renderListMovie = () => {

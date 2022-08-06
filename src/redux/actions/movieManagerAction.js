@@ -1,7 +1,7 @@
 import { GET_LIST_MOVIE } from "../contants/movie-booking";
 import { movieManagerService } from "../../services/MovieManagerService";
 
-export const getListMovie = () => {
+export const getListMovieAction = () => {
   return async (dispatch) => {
     try {
       const result = await movieManagerService.layDanhSachPhim();

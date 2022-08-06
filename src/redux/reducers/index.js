@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import carouselReducer from "./carousel/carouselReducer";
-import movieManagerReducer from "./movieMangerReducer";
+import movieManagerReducer from "./movieManagerReducer";
 import theaterManagerReducer from "./theaterManagerReducer";
 import userManagerReducer from "./userManagerReducer";
 import ticketManagerReducer from "./ticketManagerReducer";
