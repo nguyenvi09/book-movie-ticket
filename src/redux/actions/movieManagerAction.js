@@ -14,3 +14,14 @@ export const getListMovieAction = () => {
     }
   };
 };
+
+export const addMovieUploadPictureAction = (formData) => {
+  return async (dispatch) => {
+    try {
+      let result = await movieManagerService.addMovieUploadPicture(formData);
+      alert("Thêm phim thành công");
+    } catch (errors) {
+      console.log("error", errors);
+    }
+  };
+};

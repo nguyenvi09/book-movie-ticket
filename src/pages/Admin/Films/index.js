@@ -7,7 +7,7 @@ import {
 } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { getListMovieAction } from "../../../redux/actions/movieManagerAction";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link, Outlet } from "react-router-dom";
 
 function Films() {
   const { arrMovieDefault } = useSelector((state) => state.movieManagerReducer);
@@ -90,10 +90,10 @@ function Films() {
       render: (text, film) => {
         return (
           <Fragment>
-            <NavLink to="/">
+            <Link key={1} to={`edit-film/${film.maPhim}`}>
               <EditOutlined />
-            </NavLink>
-            <NavLink to="/">
+            </Link>
+            <NavLink key={2} to="/">
               <DeleteOutlined />
             </NavLink>
           </Fragment>
@@ -119,6 +119,7 @@ function Films() {
         onSearch={onSearch}
       />
       <Table columns={columns} dataSource={data} onChange={onChange} />
+      <Outlet />
     </div>
   );
 }

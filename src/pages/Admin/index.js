@@ -1,21 +1,16 @@
-import { NavLink, Outlet, Link } from "react-router-dom";
-import { Space, Tabs } from "antd";
+import { Outlet, Link } from "react-router-dom";
 import React from "react";
 
 const AdminPage = () => {
   return (
     <div id="wrapper">
-      {/* Sidebar */}
       <div id="sidebar-wrapper">
         <ul className="sidebar-nav">
           <li className="sidebar-brand">
             <Link to="films">Danh sách phim</Link>
           </li>
           <li>
-            <Link to="dashboard">Dashboard</Link>
-          </li>
-          <li>
-            <a href="#">Shortcuts</a>
+            <Link to="add-new-film">Thêm mới phim</Link>
           </li>
         </ul>
       </div>

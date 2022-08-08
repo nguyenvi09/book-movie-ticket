@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Loading from "./components/Layout/Loading";
-import Dashboard from "./pages/Admin/Dashboard";
+
 import Film from "./pages/Admin/Films";
 import Checkout from "./pages/Checkout";
 import Detail from "./pages/Detail";
@@ -8,6 +8,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AdminPage from "./pages/Admin";
+import AddNewFilm from "./pages/Admin/AddNewFilm";
+import EditFilm from "./pages/Admin/EditFilm";
 function App() {
   return (
     <BrowserRouter>
@@ -22,8 +24,10 @@ function App() {
         <Route path="/register" element={<Register />}></Route>
 
         <Route path="/admin" element={<AdminPage />}>
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="films" element={<Film />} />
+          <Route path="films" element={<Film />}>
+            <Route path="edit-film/:id" element={<EditFilm />} />
+          </Route>
+          <Route path="add-new-film" element={<AddNewFilm />} />
         </Route>
       </Routes>
     </BrowserRouter>
