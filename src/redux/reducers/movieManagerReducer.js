@@ -1,4 +1,5 @@
 import {
+  DELETE_MOVIE,
   GET_LIST_MOVIE,
   SET_CHI_TIET_PHIM,
   SET_FILM_DANG_CHIEU,
@@ -56,6 +57,17 @@ const movieManagerReducer = (state = initialState, action) => {
     }
     case SET_MOVIE_INFO: {
       state.movieInfo = action.payload;
+      return { ...state };
+    }
+    case DELETE_MOVIE: {
+      const index = state.arrMovie.findIndex(
+        (movie) => movie.maPhim === action.payload.maPhim
+      );
+      if (index !== -1) {
+        state.arrMovie.slice(index, 1);
+        return { ...state };
+      }
+
       return { ...state };
     }
     default:

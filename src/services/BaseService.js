@@ -40,7 +40,12 @@ export class BaseService {
     return Axios({
       url: `${DOMAIN}${url}`,
       method: "DELETE",
-      headers: { Authorization: "Bearer " + localStorage.getItem(TOKEN) },
+      headers: {
+        Authorization: localStorage.getItem(USER_LOGIN)
+          ? "Bearer " + JSON.parse(localStorage.getItem(USER_LOGIN)).accessToken
+          : "",
+        TokenCybersoft: TOKEN,
+      },
     });
   };
 }

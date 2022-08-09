@@ -6,7 +6,10 @@ import {
   DeleteOutlined,
 } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { getListMovieAction } from "../../../redux/actions/movieManagerAction";
+import {
+  deleteMovieAction,
+  getListMovieAction,
+} from "../../../redux/actions/movieManagerAction";
 import { NavLink, Outlet } from "react-router-dom";
 
 function Films() {
@@ -93,9 +96,20 @@ function Films() {
             <NavLink key={1} to={`edit-film/${film.maPhim}`}>
               <EditOutlined />
             </NavLink>
-            <NavLink key={2} to="/">
+            <span
+              style={{ cursor: "pointer", color: "red" }}
+              key={2}
+              to="/"
+              onClick={() => {
+                if (
+                  window.confirm("Bạn có chắc muốn xóa phim" + film.tenPhim)
+                ) {
+                  dispatch(deleteMovieAction(film.maPhim));
+                }
+              }}
+            >
               <DeleteOutlined />
-            </NavLink>
+            </span>
           </Fragment>
         );
       },
@@ -118,7 +132,12 @@ function Films() {
         size="large"
         onSearch={onSearch}
       />
-      <Table columns={columns} dataSource={data} onChange={onChange} />
+      <Table
+        columns={columns}
+        dataSource={data}
+        onChange={onChange}
+        rowKey="maPhim"
+      />
       <Outlet />
     </div>
   );

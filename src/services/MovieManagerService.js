@@ -25,6 +25,10 @@ export class MovieManagerService extends BaseService {
   updateMovieUpload = (formData) => {
     return this.post(`/api/QuanLyPhim/CapNhatPhimUpload`, formData);
   };
+
+  deleteMovie = (maPhim) => {
+    return this.delete(`/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`);
+  };
 }
 
 export const movieManagerService = new MovieManagerService();

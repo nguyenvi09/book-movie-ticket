@@ -80,7 +80,7 @@ const EditFilm = () => {
     return (value) => formik.setFieldValue(name, value);
   };
 
-  const handleChangeFile = (e) => {
+  const handleChangeFile = async (e) => {
     //Lấy file ra từ e
     let file = e.target.files[0];
     if (
@@ -89,14 +89,14 @@ const EditFilm = () => {
       file.type === "image/gif" ||
       file.type === "image/png"
     ) {
+      //Đem dữ liệu file lưu vào formik
+      await formik.setFieldValue("hinhAnh", file);
       //Tạo đối tượng để đọc file
       let reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = (e) => {
         setImgSrc(e.target.result);
       };
-      //Đem dữ liệu file lưu vào formik
-      formik.setFieldValue("hinhAnh", file);
     }
   };
 
