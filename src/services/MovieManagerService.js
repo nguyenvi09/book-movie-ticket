@@ -14,12 +14,16 @@ export class MovieManagerService extends BaseService {
     return this.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}`);
   };
 
-  layThongTinPhim = (maPhim) => {
+  getMovieInfo = (maPhim) => {
     return this.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`);
   };
 
   addMovieUploadPicture = (formData) => {
     return this.post(`/api/QuanLyPhim/ThemPhimUploadHinh`, formData);
+  };
+
+  updateMovieUpload = (formData) => {
+    return this.post(`/api/QuanLyPhim/CapNhatPhimUpload`, formData);
   };
 }
 

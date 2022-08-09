@@ -13,3 +13,4 @@ export const SET_THONG_TIN_NGUOI_DUNG =
 export const DISPLAY_LOADING = "@movie-booking/DISPLAY_LOADING";
 export const HIDE_LOADING = "@movie-booking/HIDE_LOADING";
 export const CHUYEN_TAB = "@movie-booking/CHUYEN_TAB";
+export const SET_MOVIE_INFO = "@movie-booking/SET_MOVIE_INFO";

@@ -3,6 +3,7 @@ import {
   SET_CHI_TIET_PHIM,
   SET_FILM_DANG_CHIEU,
   SET_FILM_SAP_CHIEU,
+  SET_MOVIE_INFO,
 } from "../contants/movie-booking";
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   movieDetail: {},
   movieTrailer: "",
   displayTrailer: "none",
+  movieInfo: {},
 };
 
 const movieManagerReducer = (state = initialState, action) => {
@@ -50,6 +52,10 @@ const movieManagerReducer = (state = initialState, action) => {
     case "CLOSE_MODAL_TRAILER": {
       state.movieTrailer = "";
       state.displayTrailer = action.display;
+      return { ...state };
+    }
+    case SET_MOVIE_INFO: {
+      state.movieInfo = action.payload;
       return { ...state };
     }
     default:
