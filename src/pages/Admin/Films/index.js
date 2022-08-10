@@ -23,7 +23,10 @@ function Films() {
 
   const { Search } = Input;
 
-  const onSearch = (value) => console.log(value);
+  const onSearch = (value) => {
+    console.log(value);
+    dispatch(getListMovieAction(value));
+  };
 
   const columns = [
     {

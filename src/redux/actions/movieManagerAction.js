@@ -5,10 +5,10 @@ import {
 } from "../contants/movie-booking";
 import { movieManagerService } from "../../services/MovieManagerService";
 
-export const getListMovieAction = () => {
+export const getListMovieAction = (tenPhim = "") => {
   return async (dispatch) => {
     try {
-      const result = await movieManagerService.layDanhSachPhim();
+      const result = await movieManagerService.getListMovie(tenPhim);
       dispatch({
         type: GET_LIST_MOVIE,
         data: result.data.content,
