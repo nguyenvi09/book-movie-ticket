@@ -43,7 +43,6 @@ function Register() {
         onSubmit={formik.handleSubmit}
         className={`${styles["register__form"]}`}
       >
-        <NavLink to="/">trở về Trang Chủ</NavLink>
         <div className="form-outline mb-4">
           <input
             type="text"
@@ -124,7 +123,11 @@ function Register() {
             Đăng ký
           </button>
         </div>
+        <span>Bạn đã có tài khoản? </span>
         <NavLink to="/login">Đăng nhập</NavLink>
+        <NavLink className={`${styles["close"]}`} to="/">
+          X
+        </NavLink>
       </form>
     </div>
   );

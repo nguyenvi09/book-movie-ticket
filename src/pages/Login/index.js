@@ -30,7 +30,6 @@ function Login(props) {
         onSubmit={formik.handleSubmit}
         className={`${styles["login__form"]}`}
       >
-        <h1>Đăng nhập</h1>
         <div className="form-outline mb-4">
           <input
             type="text"
@@ -75,6 +74,9 @@ function Login(props) {
             Đăng ký
           </NavLink>
         </p>
+        <NavLink className={`${styles["close"]}`} to="/">
+          X
+        </NavLink>
       </form>
     </div>
   );
