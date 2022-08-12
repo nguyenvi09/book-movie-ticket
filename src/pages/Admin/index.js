@@ -1,16 +1,30 @@
-import { Outlet, Link } from "react-router-dom";
 import React from "react";
+import { Outlet, NavLink } from "react-router-dom";
+import AppImages from "../../components/AppImages/AppImages";
 
 const AdminPage = () => {
   return (
     <div id="wrapper">
       <div id="sidebar-wrapper">
         <ul className="sidebar-nav">
-          <li className="sidebar-brand">
-            <Link to="films">Danh sách phim</Link>
+          <li style={{ textAlign: "center", marginTop: "10px" }}>
+            <AppImages width="55%" />
           </li>
-          <li>
-            <Link to="add-new-film">Thêm mới phim</Link>
+          <li className="sidebar-brand">
+            <NavLink
+              className={({ isActive }) => (isActive ? "active" : "inactive")}
+              to="films"
+            >
+              Danh sách phim
+            </NavLink>
+          </li>
+          <li className="sidebar-brand">
+            <NavLink
+              className={({ isActive }) => (isActive ? "active " : "inactive")}
+              to="add-new-film"
+            >
+              Thêm mới phim
+            </NavLink>
           </li>
         </ul>
       </div>
@@ -18,8 +32,11 @@ const AdminPage = () => {
       <div id="page-content-wrapper">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-lg-12">
+            <div class="col-8">
               <h1>Admin Page</h1>
+            </div>
+            <div class="col-4">
+              <h1>User</h1>
             </div>
           </div>
         </div>

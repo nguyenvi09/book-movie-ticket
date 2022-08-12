@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
+:root{
+  --primary-color: #fb4021;
+}
 
 *{
     margin: 0;
@@ -31,6 +34,21 @@ li{
 .ant-tabs-tab-btn{
     font-size: 2rem;
     font-weight: bold;
+}
+
+.ant-tabs-tab:hover,
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn
+ {
+  color: var(--primary-color) !important;
+}
+
+.ant-tabs-ink-bar{
+  background-color: var(--primary-color);
+}
+
+#userAccount:hover{
+ color: var(--primary-color);
+ font-weight: 700;
 }
 
 /* Toggle Styles */
@@ -87,18 +105,18 @@ li{
   }
   .sidebar-nav li a {
     display: block;
-    text-decoration: none;
     color: #999999;
+    font-weight: 900;
   }
   .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
     background: rgba(255, 255, 255, 0.2);
   }
-  .sidebar-nav li a:active,
-  .sidebar-nav li a:focus {
-    text-decoration: none;
-  }
+  // .sidebar-nav li a:active,
+  // .sidebar-nav li a:focus {
+  //   text-decoration: none;
+  // }
   .sidebar-nav > .sidebar-brand {
     height: 65px;
     font-size: 18px;
@@ -110,6 +128,9 @@ li{
   .sidebar-nav > .sidebar-brand a:hover {
     color: #fff;
     background: none;
+  }
+  .active{
+    color: white !important;
   }
   @media(min-width:768px) {
     #wrapper {

@@ -40,7 +40,8 @@ function Home(props) {
               textAlign: "center",
               padding: "10px 0",
               fontSize: "3rem",
-              fontWeight: "800",
+              fontWeight: "900",
+              color: "var(--primary-color)",
             }}
           >
             Lịch chiếu phim

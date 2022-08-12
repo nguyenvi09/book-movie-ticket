@@ -106,14 +106,7 @@ const AddNewFilm = () => {
         onValuesChange={onFormLayoutChange}
         size={componentSize}
       >
-        <h3>Thêm mới phim </h3>
-        {/* <Form.Item label="Form Size" name="size">
-          <Radio.Group>
-            <Radio.Button value="small">Small</Radio.Button>
-            <Radio.Button value="default">Default</Radio.Button>
-            <Radio.Button value="large">Large</Radio.Button>
-          </Radio.Group>
-        </Form.Item> */}
+        <h1>Thêm mới phim </h1>
         <Form.Item label="Tên phim">
           <Input name="tenPhim" onChange={formik.handleChange} />
         </Form.Item>

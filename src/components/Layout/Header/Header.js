@@ -3,6 +3,7 @@ import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import AppImages from "../../AppImages/AppImages";
+import UserAccount from "../UserAccount";
 function Header() {
   const { userLogin } = useSelector((state) => state.userManagerReducer);
   const renderLogin = () => {
@@ -31,12 +32,7 @@ function Header() {
 
     return (
       <li>
-        <NavLink
-          to="/profile"
-          style={{ color: "white", fontSize: "2rem", fontWeight: "600" }}
-        >
-          <span className="fa-solid fa-user" /> {userLogin.taiKhoan}
-        </NavLink>
+        <UserAccount user={userLogin} />
       </li>
     );
   };

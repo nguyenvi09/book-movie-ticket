@@ -8,6 +8,10 @@ export class UserManagementService extends BaseService {
     return this.post(`/api/QuanLyNguoiDung/DangNhap`, logInInfo);
   };
 
+  registerAccount = (registerInfo) => {
+    return this.post(`/api/QuanLyNguoiDung/DangKy`, registerInfo);
+  };
+
   getUserInfo = () => {
     return this.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`);
   };

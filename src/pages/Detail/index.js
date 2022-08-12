@@ -139,8 +139,11 @@ function Detail(props) {
                                         key={index}
                                         style={{
                                           padding: "3px",
-                                          border: "1px solid #4d96ff",
+                                          border:
+                                            "1px solid var(--primary-color)",
                                           borderRadius: "5px",
+                                          color: "var(--primary-color)",
+                                          fontWeight: 500,
                                         }}
                                       >
                                         {moment(

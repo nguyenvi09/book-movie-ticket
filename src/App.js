@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Loading from "./components/Layout/Loading";
+import { createBrowserHistory } from "history";
 
+import Loading from "./components/Layout/Loading";
 import Film from "./pages/Admin/Films";
 import Checkout from "./pages/Checkout";
 import Detail from "./pages/Detail";
@@ -10,9 +11,12 @@ import Register from "./pages/Register";
 import AdminPage from "./pages/Admin";
 import AddNewFilm from "./pages/Admin/AddNewFilm";
 import EditFilm from "./pages/Admin/EditFilm";
+
+export const history = createBrowserHistory();
+
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter history={history}>
       <Loading />
       <Routes>
         <Route path="/" element={<Home />}></Route>

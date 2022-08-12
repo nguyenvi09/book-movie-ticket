@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from "react";
-import styles from "./login.module.scss";
+import styles from "./Login.module.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { NavLink, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { logInAction } from "../../redux/actions/userManagementAction";
-import { USER_LOGIN } from "../../util/settings/config";
 
 function Login(props) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -23,11 +20,7 @@ function Login(props) {
       matKhau: Yup.string().required("Mật khẩu không được bỏ trống!"),
     }),
     onSubmit: (values) => {
-      const action = logInAction(values);
-      dispatch(action);
-      if (localStorage.getItem(USER_LOGIN)) {
-        navigate(-1);
-      }
+      dispatch(logInAction(values));
     },
   });
 
@@ -69,7 +62,7 @@ function Login(props) {
           )}
         </div>
         <div className="pt-1 mb-4">
-          <button className="btn btn-info btn-lg btn-block" type="submit">
+          <button className="btn btn-danger btn-lg btn-block" type="submit">
             Đăng nhập
           </button>
         </div>

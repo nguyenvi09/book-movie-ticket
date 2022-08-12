@@ -1,0 +1,37 @@
+
+.register__background{
+    background-image: url("../../../public/assets/images/bg-login.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .register__form{
+        width: 30%;
+        padding: 60px 40px;
+        border-radius: 10px;
+        background-color: #000000b7;
+        color: gray;
+        font-size: 2rem;
+        h1{
+            color: white;
+            font-size: 4rem;
+        }
+
+        input, button{
+            height: 50px;
+            font-size: 1.6rem;
+        }
+        a{
+            color: whitesmoke;
+            &:hover{
+                text-decoration: underline;
+                color: #188fff;
+            }
+        }
+       
+    }
+}
+

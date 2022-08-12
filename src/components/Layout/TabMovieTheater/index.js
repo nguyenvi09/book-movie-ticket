@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Tabs } from "antd";
 import { NavLink } from "react-router-dom";
 import moment from "moment";
-import styles from "./tabMovieTheater.module.scss";
+import styles from "./TabMovieTheater.module.scss";
 const { TabPane } = Tabs;
 
 function TabMovieTheater(props) {
@@ -81,8 +81,11 @@ function TabMovieTheater(props) {
                                         <NavLink
                                           style={{
                                             padding: "3px",
-                                            border: "1px solid #1890ff",
+                                            border:
+                                              "1.5px solid var(--primary-color)",
                                             borderRadius: "5px",
+                                            color: "var(--primary-color)",
+                                            fontWeight: 600,
                                           }}
                                           to={`/checkout/${showTime.maLichChieu}`}
                                           key={index}

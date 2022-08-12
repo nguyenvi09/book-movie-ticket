@@ -1,6 +1,8 @@
+import { bindActionCreators } from "redux";
 import { TOKEN, USER_LOGIN } from "../../util/settings/config";
 import {
   DANG_NHAP_ACTION,
+  LOG_OUT,
   SET_THONG_TIN_NGUOI_DUNG,
 } from "../contants/movie-booking";
 
@@ -26,6 +28,10 @@ const userManagerReducer = (state = initialState, action) => {
     case SET_THONG_TIN_NGUOI_DUNG: {
       state.thongTinNguoiDung = action.data;
       return { ...state };
+    }
+
+    case LOG_OUT: {
+      return { ...state, userLogin: action.payload };
     }
     default:
       return { ...state };
