@@ -41,11 +41,12 @@ function UserAccount(props) {
   return (
     <Dropdown overlay={menu}>
       <a onClick={(e) => e.preventDefault()}>
+        <img
+          src="https://i.pravatar.cc/"
+          alt="https://i.pravatar.cc/"
+          style={{ width: "50px", borderRadius: "50%", marginRight: "10px" }}
+        />
         <Space>
-          <i
-            className="fa-solid fa-user"
-            style={{ color: "white", fontSize: "2.5rem" }}
-          />{" "}
           <span style={{ color: "white", fontSize: "2rem", fontWeight: "800" }}>
             {props.user.taiKhoan}
           </span>

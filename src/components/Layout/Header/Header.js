@@ -1,5 +1,5 @@
 import _ from "lodash";
-import React, { Fragment } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import AppImages from "../../AppImages/AppImages";
@@ -9,7 +9,7 @@ function Header() {
   const renderLogin = () => {
     if (_.isEmpty(userLogin)) {
       return (
-        <Fragment>
+        <ul className="nav navbar-right" style={{ gap: "2rem" }}>
           <li>
             <NavLink
               style={{ color: "white", fontSize: "2rem", fontWeight: "600" }}
@@ -26,15 +26,11 @@ function Header() {
               <span className="fa-solid fa-right-to-bracket" /> Đăng nhập
             </NavLink>
           </li>
-        </Fragment>
+        </ul>
       );
     }
 
-    return (
-      <li>
-        <UserAccount user={userLogin} />
-      </li>
-    );
+    return <UserAccount user={userLogin} />;
   };
   return (
     <nav
@@ -78,9 +74,7 @@ function Header() {
             </a>
           </li>
         </ul>
-        <ul className="nav navbar-right" style={{ gap: "2rem" }}>
-          {renderLogin()}
-        </ul>
+        {renderLogin()}
       </div>
     </nav>
   );

@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import AdminPage from "./pages/Admin";
 import AddNewFilm from "./pages/Admin/AddNewFilm";
 import EditFilm from "./pages/Admin/EditFilm";
+import Profile from "./pages/Profile";
 
 export const history = createBrowserHistory();
 
@@ -26,6 +27,7 @@ function App() {
 
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
 
         <Route path="/admin" element={<AdminPage />}>
           <Route path="films" element={<Film />}>
