@@ -57,3 +57,18 @@ export const registerAccountAction = (registerInfo) => {
     }
   };
 };
+
+export const updateAccountAction = (updateInfo) => {
+  return async (dispatch) => {
+    try {
+      const result = await userManagementService.updateAccount(updateInfo);
+      dispatch({
+        type: "UPDATE_ACCOUNT",
+        payload: result.data.content,
+      });
+      window.alert("Cập nhật thành công!");
+    } catch (errors) {
+      console.log("errors", errors);
+    }
+  };
+};

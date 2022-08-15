@@ -1,3 +1,4 @@
+import { relativeTimeRounding } from "moment";
 import { BaseService } from "./BaseService";
 export class UserManagementService extends BaseService {
   constructor() {
@@ -14,6 +15,13 @@ export class UserManagementService extends BaseService {
 
   getUserInfo = () => {
     return this.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`);
+  };
+
+  updateAccount = (updateInfo) => {
+    return this.put(
+      `/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+      updateInfo
+    );
   };
 }
 

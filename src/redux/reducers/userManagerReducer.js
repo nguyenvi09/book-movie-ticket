@@ -33,6 +33,9 @@ const userManagerReducer = (state = initialState, action) => {
     case LOG_OUT: {
       return { ...state, userLogin: action.payload };
     }
+    case "UPDATE_ACCOUNT": {
+      return { ...state, userLogin: action.payload };
+    }
     default:
       return { ...state };
   }

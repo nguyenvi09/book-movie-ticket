@@ -3,37 +3,14 @@ import Footer from "../../components/Layout/Footer/Footer";
 import Header from "../../components/Layout/Header/Header";
 import styles from "./Profile.module.scss";
 import { useFormik } from "formik";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
+import { Button, Modal } from "antd";
+import { GROUPID } from "../../util/settings/config";
+import { updateAccountAction } from "../../redux/actions/userManagementAction";
 
 function Profile() {
   const { userLogin } = useSelector((state) => state.userManagerReducer);
-  // console.log(userLogin);
-  const [display, setDisplay] = useState("none");
-  const [btnDisplay, setBtnDisplay] = useState("block");
-  const formik = useFormik({
-    initialValues: {
-      taiKhoan: "",
-      hoTen: userLogin.hoTen,
-      email: "",
-      soDienThoai: "",
-      matKhau: "",
-      xacNhanMatKhau: "",
-    },
-    validationSchema: Yup.object({
-      // taiKhoan: Yup.string()
-      //   .required("Tài khoản không được bỏ trống!")
-      //   .min(6, "Tài khoản tối thiểu 6 ký tự"),
-      matKhau: Yup.string().required("Mật khẩu không được bỏ trống!"),
-      xacNhanMatKhau: Yup.string()
-        .label("confirm password")
-        .required()
-        .oneOf([Yup.ref("password"), null], "Passwords must match"),
-    }),
-    onSubmit: (values) => {
-      console.log("values", values);
-    },
-  });
   return (
     <div>
       <Header />
@@ -56,14 +33,13 @@ function Profile() {
               <h1 className="mt-4">{userLogin.taiKhoan}</h1>
             </div>
             <div className="col-8">
-              <form onSubmit={formik.handleSubmit}>
+              <form>
                 <div className="form-group row">
                   <label className="col-sm-2 col-form-label">Tài khoản</label>
                   <div className="col-sm-10">
                     <input
-                      id={`${styles[`input`]}`}
                       type="text"
-                      className="form-control"
+                      className={`form-control ${styles[`input`]}`}
                       name="taiKhoan"
                       value={userLogin.taiKhoan}
                       disabled
@@ -74,11 +50,11 @@ function Profile() {
                   <label className="col-sm-2 col-form-label">Họ tên</label>
                   <div className="col-sm-10">
                     <input
-                      id={`${styles[`input`]}`}
                       type="text"
-                      className="form-control"
+                      className={`form-control ${styles[`input`]}`}
                       name="hoTen"
                       value={userLogin.hoTen}
+                      disabled
                     />
                   </div>
                 </div>
@@ -86,11 +62,11 @@ function Profile() {
                   <label className="col-sm-2 col-form-label">Email</label>
                   <div className="col-sm-10">
                     <input
-                      id={`${styles[`input`]}`}
                       type="email"
-                      className="form-control"
+                      className={`form-control ${styles[`input`]}`}
                       name="email"
                       value={userLogin.email}
+                      disabled
                     />
                   </div>
                 </div>
@@ -100,92 +76,17 @@ function Profile() {
                   </label>
                   <div className="col-sm-10">
                     <input
-                      id={`${styles[`input`]}`}
                       type="text"
-                      className="form-control"
+                      className={`form-control ${styles[`input`]}`}
                       name="soDienThoai"
                       value={userLogin.soDT}
+                      disabled
                     />
                   </div>
                 </div>
 
-                <div
-                  style={{ display: `${display}` }}
-                  className="form-group row"
-                >
-                  <label className="col-sm-2 col-form-label">Mật khẩu</label>
-                  <div className="col-sm-10">
-                    <input
-                      id={`${styles[`input`]}`}
-                      type="password"
-                      className="form-control"
-                    />
-                    {formik.errors.matKhau && (
-                      <span style={{ fontSize: "1.6rem", color: "#ff0000c2" }}>
-                        {formik.errors.matKhau}
-                      </span>
-                    )}
-                  </div>
-                </div>
-                <div
-                  style={{ display: `${display}` }}
-                  className="form-group row"
-                >
-                  <label className="col-sm-2 col-form-label">
-                    Nhập lại mật khẩu
-                  </label>
-                  <div className="col-sm-10">
-                    <input
-                      id={`${styles[`input`]}`}
-                      type="password"
-                      className="form-control"
-                      name="xacNhanMatKhau"
-                    />
-                    {formik.errors.xacNhanMatKhau && (
-                      <span style={{ fontSize: "1.6rem", color: "#ff0000c2" }}>
-                        {formik.errors.xacNhanMatKhau}
-                      </span>
-                    )}
-                  </div>
-                </div>
                 <div style={{ display: "flex", justifyContent: "end" }}>
-                  <button
-                    style={{ display: `${btnDisplay}` }}
-                    className="btn btn-danger mb-2"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setDisplay("flex");
-                      setBtnDisplay("none");
-                    }}
-                  >
-                    Cập nhật thông tin
-                  </button>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "10px",
-                    justifyContent: "end",
-                  }}
-                >
-                  <button
-                    style={{ display: `${display}` }}
-                    className="btn btn-danger mb-2"
-                    type="submit"
-                  >
-                    Lưu
-                  </button>
-                  <button
-                    style={{ display: `${display}` }}
-                    className="btn btn-danger mb-2"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setDisplay("none");
-                      setBtnDisplay("block");
-                    }}
-                  >
-                    Hủy
-                  </button>
+                  <UpdateProfileModal />
                 </div>
               </form>
             </div>
@@ -196,5 +97,152 @@ function Profile() {
     </div>
   );
 }
+
+const UpdateProfileModal = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const { userLogin } = useSelector((state) => state.userManagerReducer);
+  const dispatch = useDispatch();
+  const phoneRegExp =
+    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      maNhom: GROUPID,
+      taiKhoan: userLogin.taiKhoan,
+      hoTen: userLogin.hoTen,
+      email: userLogin.email,
+      soDT: userLogin.soDT,
+      matKhau: "",
+      maLoaiNguoiDung: userLogin.maLoaiNguoiDung,
+    },
+    validationSchema: Yup.object({
+      hoTen: Yup.string().required("Họ tên không được bỏ trống!"),
+      matKhau: Yup.string().required("Mật khẩu không được bỏ trống!"),
+      email: Yup.string()
+        .required("Email không được bỏ trống!")
+        .email("Email không hợp lệ, ví dụ: example@gmail.com"),
+      soDT: Yup.string()
+        .required("Số điện thoại không được bỏ trống!")
+        .max(10, "Tối ta 10 chữ số!")
+        .matches(phoneRegExp, "Số điện thoại không hợp lệ!"),
+    }),
+    onSubmit: (values) => {
+      console.log("values", values);
+      dispatch(updateAccountAction(values));
+      handleCancel();
+    },
+  });
+  const handleOK = () => {
+    formik.handleSubmit();
+  };
+
+  return (
+    <>
+      <Button type="primary" onClick={showModal}>
+        Cập nhật thông tin
+      </Button>
+      <Modal
+        title="Cập nhật thông tin"
+        visible={isModalVisible}
+        onCancel={handleCancel}
+        onOk={handleOK}
+        okType="primary"
+        okText="Lưu"
+      >
+        <form onSubmit={formik.handleSubmit}>
+          <div className="form-group row">
+            <label className="col-sm-2 col-form-label">Tài khoản</label>
+            <div className="col-sm-10">
+              <input
+                type="text"
+                className={`form-control ${styles[`input`]}`}
+                name="taiKhoan"
+                value={formik.values.taiKhoan}
+                disabled
+              />
+            </div>
+          </div>
+          <div className="form-group row">
+            <label className="col-sm-2 col-form-label">Họ tên</label>
+            <div className="col-sm-10">
+              <input
+                type="text"
+                className={`form-control ${styles[`input`]}`}
+                name="hoTen"
+                value={formik.values.hoTen}
+                onChange={formik.handleChange}
+              />
+              {formik.errors.hoTen && (
+                <span style={{ fontSize: "1.6rem", color: "#ff0000c2" }}>
+                  {formik.errors.hoTen}
+                </span>
+              )}
+            </div>
+          </div>
+          <div className="form-group row">
+            <label className="col-sm-2 col-form-label">Email</label>
+            <div className="col-sm-10">
+              <input
+                type="email"
+                className={`form-control ${styles[`input`]}`}
+                name="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+              />
+              {formik.errors.email && (
+                <span style={{ fontSize: "1.6rem", color: "#ff0000c2" }}>
+                  {formik.errors.email}
+                </span>
+              )}
+            </div>
+          </div>
+          <div className="form-group row">
+            <label className="col-sm-2 col-form-label">Số điện thoại</label>
+            <div className="col-sm-10">
+              <input
+                type="text"
+                className={`form-control ${styles[`input`]}`}
+                name="soDT"
+                value={formik.values.soDT}
+                onChange={formik.handleChange}
+              />
+              {formik.errors.soDT && (
+                <span style={{ fontSize: "1.6rem", color: "#ff0000c2" }}>
+                  {formik.errors.soDT}
+                </span>
+              )}
+            </div>
+          </div>
+
+          <div className="form-group row">
+            <label className="col-sm-2 col-form-label">Mật khẩu</label>
+            <div className="col-sm-10">
+              <input
+                type="password"
+                className={`form-control ${styles[`input`]}`}
+                name="matKhau"
+                value={formik.values.matKhau}
+                onChange={formik.handleChange}
+              />
+              {formik.errors.matKhau && (
+                <span style={{ fontSize: "1.6rem", color: "#ff0000c2" }}>
+                  {formik.errors.matKhau}
+                </span>
+              )}
+            </div>
+          </div>
+        </form>
+      </Modal>
+    </>
+  );
+};
 
 export default Profile;
