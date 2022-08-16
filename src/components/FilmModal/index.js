@@ -1,5 +1,5 @@
+import { Button, Modal } from "antd";
 import {
-  Button,
   Cascader,
   DatePicker,
   Form,
@@ -17,9 +17,30 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getMovieInfoAction,
   updateMovieUploadAction,
-} from "../../../redux/actions/movieManagerAction";
-import { GROUPID } from "../../../util/settings/config";
+} from "../../redux/actions/movieManagerAction";
+import { GROUPID } from "../../util/settings/config";
+const FilmModal = (props) => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  return (
+    <>
+      <Button type="primary" onClick={showModal}>
+        Sửa
+      </Button>
+      <Modal visible={isModalVisible} onCancel={handleCancel} footer={null}>
+        <EditFilm maPhim={props.maPhim} closeModal={handleCancel} />
+      </Modal>
+    </>
+  );
+};
 const EditFilm = (props) => {
   const [componentSize, setComponentSize] = useState("default");
   const [imgSrc, setImgSrc] = useState("");
@@ -106,7 +127,7 @@ const EditFilm = (props) => {
       <Form
         onSubmitCapture={formik.handleSubmit}
         labelCol={{
-          span: 4,
+          span: 6,
         }}
         wrapperCol={{
           span: 14,
@@ -190,7 +211,11 @@ const EditFilm = (props) => {
           />
         </Form.Item>
         <Form.Item label="Tác vụ">
-          <button type="submit" className="bg-info text-white p-2">
+          <button
+            type="submit"
+            className="bg-info text-white p-2"
+            onClick={() => props.closeModal()}
+          >
             Cập nhật phim
           </button>
         </Form.Item>
@@ -198,5 +223,4 @@ const EditFilm = (props) => {
     </div>
   );
 };
-
-export default EditFilm;
+export default FilmModal;

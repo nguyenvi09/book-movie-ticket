@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Outlet, NavLink } from "react-router-dom";
 import AppImages from "../../components/AppImages/AppImages";
 
@@ -35,9 +36,7 @@ const AdminPage = () => {
             <div class="col-8">
               <h1>Admin Page</h1>
             </div>
-            <div class="col-4">
-              <h1>User</h1>
-            </div>
+            <div class="col-4"></div>
           </div>
         </div>
       </div>

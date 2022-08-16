@@ -34,10 +34,13 @@ export const updateMovieUploadAction = (formData) => {
   return async (dispatch) => {
     try {
       let result = await movieManagerService.updateMovieUpload(formData);
-      alert("Cập nhật phim thành công");
-      dispatch(getListMovieAction());
+      if (result.data.statusCode == 200) {
+        alert("Cập nhật phim thành công");
+        dispatch(getListMovieAction());
+      }
     } catch (errors) {
       console.log("error", errors);
+      alert(errors.response?.data.content);
     }
   };
 };

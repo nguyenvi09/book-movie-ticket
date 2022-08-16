@@ -1,17 +1,13 @@
-import React, { Fragment, useEffect } from "react";
-import { Table, Input } from "antd";
-import {
-  SearchOutlined,
-  EditOutlined,
-  DeleteOutlined,
-} from "@ant-design/icons";
+import React, { Fragment, useEffect, useState } from "react";
+import { Table, Input, Button } from "antd";
+import { SearchOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteMovieAction,
   getListMovieAction,
 } from "../../../redux/actions/movieManagerAction";
-import { NavLink, Outlet } from "react-router-dom";
-
+import { Outlet } from "react-router-dom";
+import FilmModal from "../../../components/FilmModal";
 function Films() {
   const { arrMovieDefault } = useSelector((state) => state.movieManagerReducer);
 
@@ -34,7 +30,7 @@ function Films() {
       dataIndex: "maPhim",
 
       sorter: (a, b) => a.maPhim - b.maPhim,
-      sortDirections: ["descend", "ascend"],
+      defaultSortOrder: "descend",
       width: "15%",
     },
     {
@@ -47,8 +43,8 @@ function Films() {
             <img
               src={film.hinhAnh}
               alt={film.tenPhim}
-              width={50}
-              height={50}
+              width={70}
+              height={90}
               onError={(e) => {
                 e.target.onError = null;
                 e.target.src = `https://picsum.photos/id/${index}/50/50`;
@@ -67,11 +63,11 @@ function Films() {
         let tenPhimA = a.tenPhim.toLowerCase().trim();
         let tenPhimB = b.tenPhim.toLowerCase().trim();
         if (tenPhimA > tenPhimB) {
-          return 1;
+          return -1;
         }
-        return -1;
+        return 1;
       },
-      sortDirections: ["descend", "ascend"],
+      sortDirections: ["ascend", "descend"],
       width: "25%",
     },
     {
@@ -96,11 +92,12 @@ function Films() {
       render: (text, film) => {
         return (
           <Fragment>
-            <NavLink key={1} to={`edit-film/${film.maPhim}`}>
+            {/* <NavLink key={1} to={`edit-film/${film.maPhim}`}>
               <EditOutlined />
-            </NavLink>
-            <span
-              style={{ cursor: "pointer", color: "red" }}
+            </NavLink> */}
+            <FilmModal maPhim={film.maPhim} />
+            <Button
+              type="danger"
               key={2}
               to="/"
               onClick={() => {
@@ -111,8 +108,8 @@ function Films() {
                 }
               }}
             >
-              <DeleteOutlined />
-            </span>
+              Xóa
+            </Button>
           </Fragment>
         );
       },
