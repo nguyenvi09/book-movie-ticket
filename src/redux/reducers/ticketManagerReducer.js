@@ -14,8 +14,7 @@ const initialState = {
 const ticketManagerReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_CHI_TIET_PHONG_VE: {
-      state.chiTietPhongVe = action.data;
-      return { ...state };
+      return { ...state, chiTietPhongVe: action.data };
     }
     case DAT_VE: {
       //cập nhật danh sách ghế đang đặt, nếu chưa thì thêm, nếu có thì xóa
@@ -34,12 +33,10 @@ const ticketManagerReducer = (state = initialState, action) => {
       return { ...state, danhSachGheDangDat: danhSachGheCapNhat };
     }
     case DAT_VE_HOAN_TAT: {
-      state.danhSachGheDangDat = [];
-      return { ...state };
+      return { ...state, danhSachGheDangDat: [] };
     }
     case CHUYEN_TAB: {
-      state.tabActive = "2";
-      return { ...state };
+      return { ...state, tabActive: "2" };
     }
     case "CHANGE_TAB_ACTIVE": {
       state.tabActive = action.number;

@@ -26,8 +26,7 @@ const userManagerReducer = (state = initialState, action) => {
     }
 
     case SET_THONG_TIN_NGUOI_DUNG: {
-      state.thongTinNguoiDung = action.data;
-      return { ...state };
+      return { ...state, thongTinNguoiDung: action.data };
     }
 
     case LOG_OUT: {

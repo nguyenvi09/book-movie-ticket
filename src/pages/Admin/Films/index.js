@@ -6,7 +6,7 @@ import {
   deleteMovieAction,
   getListMovieAction,
 } from "../../../redux/actions/movieManagerAction";
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import FilmModal from "../../../components/FilmModal";
 function Films() {
   const { arrMovieDefault } = useSelector((state) => state.movieManagerReducer);
@@ -43,7 +43,7 @@ function Films() {
             <img
               src={film.hinhAnh}
               alt={film.tenPhim}
-              width={70}
+              width={80}
               height={90}
               onError={(e) => {
                 e.target.onError = null;
@@ -102,7 +102,7 @@ function Films() {
               to="/"
               onClick={() => {
                 if (
-                  window.confirm("Bạn có chắc muốn xóa phim" + film.tenPhim)
+                  window.confirm("Bạn có chắc muốn xóa phim: " + film.tenPhim)
                 ) {
                   dispatch(deleteMovieAction(film.maPhim));
                 }
@@ -127,7 +127,7 @@ function Films() {
       <h3 className="display-4">Quản lý phim</h3>
 
       <Search
-        placeholder="input search text"
+        placeholder="Tìm kiếm phim"
         enterButton={<SearchOutlined />}
         size="large"
         onSearch={onSearch}

@@ -146,7 +146,7 @@ const UpdateProfileModal = () => {
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
+      <Button type="danger" onClick={showModal}>
         Cập nhật thông tin
       </Button>
       <Modal

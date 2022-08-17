@@ -28,10 +28,11 @@ export const datVeAction = (thongTinDatVe = new ThongTinDatVe()) => {
     try {
       dispatch(displayLoadingAction);
       const result = await ticketManagerService.datVe(thongTinDatVe);
-      console.log(result.data.content);
       //Đặt vé thành công -> gọi lại api load lại trang phòng vé
       await dispatch(getOfficeDetailAction(thongTinDatVe.maLichChieu));
-      await dispatch({ type: DAT_VE_HOAN_TAT });
+      await dispatch({
+        type: DAT_VE_HOAN_TAT,
+      });
       await dispatch(hideLoadingAction);
       dispatch({ type: CHUYEN_TAB });
     } catch (error) {

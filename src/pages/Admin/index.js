@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Outlet, NavLink } from "react-router-dom";
 import AppImages from "../../components/AppImages/AppImages";
 
@@ -9,7 +8,9 @@ const AdminPage = () => {
       <div id="sidebar-wrapper">
         <ul className="sidebar-nav">
           <li style={{ textAlign: "center", marginTop: "10px" }}>
-            <AppImages width="55%" />
+            <NavLink to="/">
+              <AppImages width="55%" />
+            </NavLink>
           </li>
           <li className="sidebar-brand">
             <NavLink

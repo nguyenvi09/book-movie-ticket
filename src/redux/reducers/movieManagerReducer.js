@@ -21,9 +21,9 @@ const initialState = {
 const movieManagerReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_LIST_MOVIE: {
-      state.arrMovie = action.data;
-      state.arrMovieDefault = state.arrMovie;
-      return { ...state };
+      // state.arrMovie = action.data;
+      // state.arrMovieDefault = state.arrMovie;
+      return { ...state, arrMovie: action.data, arrMovieDefault: action.data };
     }
     case SET_FILM_DANG_CHIEU: {
       state.dangChieu = !state.dangChieu;
@@ -60,11 +60,11 @@ const movieManagerReducer = (state = initialState, action) => {
       return { ...state };
     }
     case DELETE_MOVIE: {
-      const index = state.arrMovie.findIndex(
+      const index = state.arrMovieDefault.findIndex(
         (movie) => movie.maPhim === action.payload.maPhim
       );
       if (index !== -1) {
-        state.arrMovie.slice(index, 1);
+        state.arrMovieDefault.slice(index, 1);
         return { ...state };
       }
 

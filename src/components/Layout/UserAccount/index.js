@@ -19,6 +19,14 @@ function UserAccount(props) {
         },
         {
           label: (
+            <NavLink id="userAccount" to="/admin/films">
+              Admin
+            </NavLink>
+          ),
+          key: "3",
+        },
+        {
+          label: (
             <a
               id="userAccount"
               onClick={() => {

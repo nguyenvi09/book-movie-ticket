@@ -19,6 +19,7 @@ import { Tabs } from "antd";
 import moment from "moment";
 import _ from "lodash";
 import { getUserInfoAction } from "../../redux/actions/userManagementAction";
+import UserAccount from "../../components/Layout/UserAccount";
 
 function Checkout(props) {
   const { userLogin } = useSelector((state) => state.userManagerReducer);
@@ -240,8 +241,9 @@ export default function CheckoutTab(props) {
     <Fragment>
       {!_.isEmpty(userLogin) ? (
         <NavLink to="/profile">
-          <span className="fa-solid fa-user mr-2"></span>
-          {userLogin.taiKhoan}
+          {/* <span className="fa-solid fa-user mr-2"></span>
+          {userLogin.taiKhoan} */}
+          <UserAccount user={userLogin} />
         </NavLink>
       ) : (
         ""
@@ -270,8 +272,7 @@ export default function CheckoutTab(props) {
         </TabPane>
         <TabPane
           tab={
-            <NavLink to="/">
-              {/* <HomeOutlined /> */}
+            <NavLink style={{ color: "var(--primary-color)" }} to="/">
               Trang chủ
             </NavLink>
           }
