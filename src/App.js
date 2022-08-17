@@ -12,6 +12,7 @@ import AdminPage from "./pages/Admin";
 import AddNewFilm from "./pages/Admin/AddNewFilm";
 import EditFilm from "./pages/Admin/EditFilm";
 import Profile from "./pages/Profile";
+import UserManagement from "./pages/Admin/UserManagement";
 
 export const history = createBrowserHistory();
 
@@ -34,6 +35,7 @@ function App() {
             <Route path="edit-film/:id" element={<EditFilm />} />
           </Route>
           <Route path="add-new-film" element={<AddNewFilm />} />
+          <Route path="user-management" element={<UserManagement />} />
         </Route>
       </Routes>
     </BrowserRouter>

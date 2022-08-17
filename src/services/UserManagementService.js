@@ -1,4 +1,5 @@
 import { relativeTimeRounding } from "moment";
+import { GROUPID } from "../util/settings/config";
 import { BaseService } from "./BaseService";
 export class UserManagementService extends BaseService {
   constructor() {
@@ -21,6 +22,23 @@ export class UserManagementService extends BaseService {
     return this.put(
       `/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
       updateInfo
+    );
+  };
+
+  getUserList = (tuKhoa = "") => {
+    if (tuKhoa.trim() !== "") {
+      return this.get(
+        `/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUPID}&tuKhoa=${tuKhoa}`
+      );
+    }
+    return this.get(
+      `/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUPID}`
+    );
+  };
+
+  deleteUser = (taiKhoan) => {
+    return this.delete(
+      `/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`
     );
   };
 }

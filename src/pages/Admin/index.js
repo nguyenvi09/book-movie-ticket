@@ -28,6 +28,14 @@ const AdminPage = () => {
               Thêm mới phim
             </NavLink>
           </li>
+          <li className="sidebar-brand">
+            <NavLink
+              className={({ isActive }) => (isActive ? "active " : "inactive")}
+              to="user-management"
+            >
+              Quản lý người dùng
+            </NavLink>
+          </li>
         </ul>
       </div>
 

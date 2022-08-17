@@ -1,4 +1,3 @@
-import { bindActionCreators } from "redux";
 import { TOKEN, USER_LOGIN } from "../../util/settings/config";
 import {
   DANG_NHAP_ACTION,
@@ -14,6 +13,7 @@ if (localStorage.getItem(USER_LOGIN)) {
 const initialState = {
   userLogin: user,
   thongTinNguoiDung: {},
+  userList: [],
 };
 
 const userManagerReducer = (state = initialState, action) => {
@@ -35,6 +35,17 @@ const userManagerReducer = (state = initialState, action) => {
     case "UPDATE_ACCOUNT": {
       return { ...state, userLogin: action.payload };
     }
+    case "SET_DANH_SACH_NGUOI_DUNG": {
+      return { ...state, userList: action.payload };
+    }
+    case "XOA_NGUOI_DUNG":
+      return {
+        ...state,
+        userList: state.userList.filter(
+          (user) => user.taiKhoan !== action.payload
+        ),
+      };
+
     default:
       return { ...state };
   }

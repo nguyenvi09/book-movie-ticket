@@ -72,3 +72,36 @@ export const updateAccountAction = (updateInfo) => {
     }
   };
 };
+
+export const getUserListAction = (tuKhoa = "") => {
+  return async (dispatch) => {
+    try {
+      const result = await userManagementService.getUserList(tuKhoa);
+      if (result.data.statusCode === 200) {
+        dispatch({
+          type: "SET_DANH_SACH_NGUOI_DUNG",
+          payload: result.data.content,
+        });
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+};
+
+export const deleteUserAction = (taiKhoan) => {
+  return async (dispatch) => {
+    try {
+      const result = await userManagementService.deleteUser(taiKhoan);
+      if (result.data.statusCode === 200) {
+        alert("Xóa thành công!");
+        dispatch({
+          type: "XOA_NGUOI_DUNG",
+          payload: result.data.content,
+        });
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+};
