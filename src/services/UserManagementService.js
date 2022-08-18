@@ -41,6 +41,10 @@ export class UserManagementService extends BaseService {
       `/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`
     );
   };
+
+  editUser = (user) => {
+    return this.post(`/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`, user);
+  };
 }
 
 export const userManagementService = new UserManagementService();

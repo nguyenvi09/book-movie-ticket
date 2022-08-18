@@ -1,17 +1,13 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Table, Input, Button } from "antd";
-import { SearchOutlined, DeleteOutlined } from "@ant-design/icons";
+import { SearchOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  deleteMovieAction,
-  getListMovieAction,
-} from "../../../redux/actions/movieManagerAction";
 import { Outlet } from "react-router-dom";
-import FilmModal from "../../../components/FilmModal";
 import {
   deleteUserAction,
   getUserListAction,
 } from "../../../redux/actions/userManagementAction";
+import UserModal from "../../../components/UserModal";
 function UserManagement() {
   const { userList } = useSelector((state) => state.userManagerReducer);
   const dispatch = useDispatch();
@@ -67,14 +63,13 @@ function UserManagement() {
     },
     {
       title: "Thao tác",
-      dataIndex: "maPhim",
+      dataIndex: "taiKhoan",
       render: (text, user) => {
         return (
-          <Fragment>
-            {/* <FilmModal maPhim={user.taiKhoan} /> */}
+          <Fragment key={user.taiKhoan}>
+            <UserModal user={user} />
             <Button
               type="danger"
-              key={2}
               onClick={() => {
                 if (
                   window.confirm("Bạn có chắc muốn xóa phim: " + user.hoTen)

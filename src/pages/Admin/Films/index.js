@@ -91,15 +91,13 @@ function Films() {
       dataIndex: "maPhim",
       render: (text, film) => {
         return (
-          <Fragment>
+          <Fragment key={film.maPhim}>
             {/* <NavLink key={1} to={`edit-film/${film.maPhim}`}>
               <EditOutlined />
             </NavLink> */}
             <FilmModal maPhim={film.maPhim} />
             <Button
               type="danger"
-              key={2}
-              to="/"
               onClick={() => {
                 if (
                   window.confirm("Bạn có chắc muốn xóa phim: " + film.tenPhim)

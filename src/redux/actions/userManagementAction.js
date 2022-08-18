@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { history } from "../../App";
 import { userManagementService } from "../../services/UserManagementService";
 import {
@@ -102,6 +103,21 @@ export const deleteUserAction = (taiKhoan) => {
       }
     } catch (error) {
       console.log("error", error);
+    }
+  };
+};
+
+export const editUserAction = (user) => {
+  return async (dispatch) => {
+    try {
+      const result = await userManagementService.editUser(user);
+      alert("Cập nhật thành công!");
+      dispatch({
+        type: "EDIT_USER",
+        payload: result.data.content,
+      });
+    } catch (errors) {
+      console.log("errors", errors);
     }
   };
 };
