@@ -45,6 +45,10 @@ export class UserManagementService extends BaseService {
   editUser = (user) => {
     return this.post(`/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`, user);
   };
+
+  addUser = (user) => {
+    return this.post(`/api/QuanLyNguoiDung/ThemNguoiDung`, user);
+  };
 }
 
 export const userManagementService = new UserManagementService();

@@ -7,7 +7,8 @@ import {
   deleteUserAction,
   getUserListAction,
 } from "../../../redux/actions/userManagementAction";
-import UserModal from "../../../components/UserModal";
+import EditUserModal from "../../../components/EditUserModal";
+import AddUserModal from "../../../components/AddUserModal";
 function UserManagement() {
   const { userList } = useSelector((state) => state.userManagerReducer);
   const dispatch = useDispatch();
@@ -26,8 +27,15 @@ function UserManagement() {
       title: "Tài khoản",
       dataIndex: "taiKhoan",
 
-      sorter: (a, b) => a.taiKhoan - b.taiKhoan,
-      defaultSortOrder: "descend",
+      sorter: (a, b) => {
+        let taiKhoanA = a.taiKhoan.toLowerCase().trim();
+        let taiKhoanB = b.taiKhoan.toLowerCase().trim();
+        if (taiKhoanA > taiKhoanB) {
+          return 1;
+        }
+        return -1;
+      },
+      sortDirections: ["ascend", "descend"],
       width: "15%",
     },
 
@@ -67,12 +75,14 @@ function UserManagement() {
       render: (text, user) => {
         return (
           <Fragment key={user.taiKhoan}>
-            <UserModal user={user} />
+            <EditUserModal user={user} />
             <Button
               type="danger"
               onClick={() => {
                 if (
-                  window.confirm("Bạn có chắc muốn xóa phim: " + user.hoTen)
+                  window.confirm(
+                    "Bạn có chắc muốn xóa người dùng: " + user.hoTen
+                  )
                 ) {
                   dispatch(deleteUserAction(user.taiKhoan));
                 }
@@ -94,6 +104,7 @@ function UserManagement() {
   };
   return (
     <div className="container">
+      <AddUserModal />
       <Search
         placeholder="Tìm kiếm phim"
         enterButton={<SearchOutlined />}
@@ -104,7 +115,7 @@ function UserManagement() {
         columns={columns}
         dataSource={data}
         onChange={onChange}
-        rowKey="taiKhoan"
+        rowKey={(r) => r.taiKhoan}
       />
       <Outlet />
     </div>

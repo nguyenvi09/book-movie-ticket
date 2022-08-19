@@ -96,12 +96,10 @@ export const deleteUserAction = (taiKhoan) => {
       const result = await userManagementService.deleteUser(taiKhoan);
       if (result.data.statusCode === 200) {
         alert("Xóa thành công!");
-        dispatch({
-          type: "XOA_NGUOI_DUNG",
-          payload: result.data.content,
-        });
+        dispatch(getUserListAction());
       }
     } catch (error) {
+      alert(error.response.data.content);
       console.log("error", error);
     }
   };
@@ -112,12 +110,21 @@ export const editUserAction = (user) => {
     try {
       const result = await userManagementService.editUser(user);
       alert("Cập nhật thành công!");
-      dispatch({
-        type: "EDIT_USER",
-        payload: result.data.content,
-      });
+      dispatch(getUserListAction());
     } catch (errors) {
       console.log("errors", errors);
+    }
+  };
+};
+
+export const addUserAction = (user) => {
+  return async (dispatch) => {
+    try {
+      const result = await userManagementService.addUser(user);
+      dispatch(getUserListAction());
+      alert("Thêm mới thành công!");
+    } catch (error) {
+      alert("Lỗi: " + error.response.data.content);
     }
   };
 };

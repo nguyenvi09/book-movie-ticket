@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import styles from "./UserModal.module.scss";
+import styles from "./EditUserModal.module.scss";
 import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import { Button, Modal } from "antd";
 import { GROUPID } from "../../util/settings/config";
 import { editUserAction } from "../../redux/actions/userManagementAction";
 
-const UserModal = (props) => {
+const EditUserModal = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
   const phoneRegExp =
@@ -167,4 +167,4 @@ const UserModal = (props) => {
   );
 };
 
-export default UserModal;
+export default EditUserModal;

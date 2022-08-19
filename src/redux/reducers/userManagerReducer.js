@@ -38,23 +38,7 @@ const userManagerReducer = (state = initialState, action) => {
     case "SET_DANH_SACH_NGUOI_DUNG": {
       return { ...state, userList: action.payload };
     }
-    case "XOA_NGUOI_DUNG":
-      return {
-        ...state,
-        userList: state.userList.filter(
-          (user) => user.taiKhoan !== action.payload
-        ),
-      };
-    case "EDIT_USER": {
-      const index = state.userList.findIndex(
-        (user) => user.taiKhoan === action.payload.taiKhoan
-      );
-      console.log("index", index);
-      if (index !== -1) {
-        return { ...state, userList: (state.userList[index] = action.payload) };
-      }
-      return { ...state };
-    }
+
     default:
       return { ...state };
   }
