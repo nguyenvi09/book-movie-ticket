@@ -135,7 +135,6 @@ const UpdateProfileModal = () => {
         .matches(phoneRegExp, "Số điện thoại không hợp lệ!"),
     }),
     onSubmit: (values) => {
-      console.log("values", values);
       dispatch(updateAccountAction(values));
       handleCancel();
     },

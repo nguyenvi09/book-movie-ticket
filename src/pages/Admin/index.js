@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet, NavLink } from "react-router-dom";
 import AppImages from "../../components/AppImages/AppImages";
+import UserAccount from "../../components/Layout/UserAccount";
 
 const AdminPage = () => {
   return (
@@ -15,7 +16,7 @@ const AdminPage = () => {
           <li className="sidebar-brand">
             <NavLink
               className={({ isActive }) => (isActive ? "active" : "inactive")}
-              to="films"
+              to="film-management"
             >
               Quản lý phim
             </NavLink>
@@ -33,15 +34,17 @@ const AdminPage = () => {
       </div>
 
       <div id="page-content-wrapper">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-8">
-              <h1>Admin Page</h1>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-12 text-center">
+              <h1 style={{ fontSize: "4rem", fontWeight: "900" }}>
+                TRANG QUẢN LÝ
+              </h1>
             </div>
-            <div class="col-4"></div>
           </div>
         </div>
       </div>
+
       <Outlet />
     </div>
   );

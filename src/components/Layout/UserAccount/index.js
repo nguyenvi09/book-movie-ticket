@@ -19,7 +19,7 @@ function UserAccount(props) {
         },
         {
           label: (
-            <NavLink id="userAccount" to="/admin/films">
+            <NavLink id="userAccount" to="/admin/film-management">
               Admin
             </NavLink>
           ),

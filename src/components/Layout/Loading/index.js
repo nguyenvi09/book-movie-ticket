@@ -21,7 +21,7 @@ function Loading(props) {
             alignItems: "center",
           }}
         >
-          <h1 className="text-white">Loading</h1>
+          <h1 className="text-white">...</h1>
         </div>
       ) : (
         ""
