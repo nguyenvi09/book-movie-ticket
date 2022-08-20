@@ -17,17 +17,10 @@ const AdminPage = () => {
               className={({ isActive }) => (isActive ? "active" : "inactive")}
               to="films"
             >
-              Danh sách phim
+              Quản lý phim
             </NavLink>
           </li>
-          <li className="sidebar-brand">
-            <NavLink
-              className={({ isActive }) => (isActive ? "active " : "inactive")}
-              to="add-new-film"
-            >
-              Thêm mới phim
-            </NavLink>
-          </li>
+
           <li className="sidebar-brand">
             <NavLink
               className={({ isActive }) => (isActive ? "active " : "inactive")}

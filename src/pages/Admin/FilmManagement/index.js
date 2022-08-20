@@ -1,14 +1,16 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Table, Input, Button } from "antd";
-import { SearchOutlined, DeleteOutlined } from "@ant-design/icons";
+import { SearchOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteMovieAction,
   getListMovieAction,
 } from "../../../redux/actions/movieManagerAction";
-import { NavLink, Outlet } from "react-router-dom";
-import FilmModal from "../../../components/FilmModal";
-function Films() {
+import { Outlet } from "react-router-dom";
+import AddFilmModal from "../../../components/Modal/AddFilmModal";
+import EditFilmModal from "../../../components/Modal/EditFilmModal";
+
+function FilmManagement() {
   const { arrMovieDefault } = useSelector((state) => state.movieManagerReducer);
 
   const dispatch = useDispatch();
@@ -20,7 +22,6 @@ function Films() {
   const { Search } = Input;
 
   const onSearch = (value) => {
-    console.log(value);
     dispatch(getListMovieAction(value));
   };
 
@@ -92,10 +93,7 @@ function Films() {
       render: (text, film) => {
         return (
           <Fragment key={film.maPhim}>
-            {/* <NavLink key={1} to={`edit-film/${film.maPhim}`}>
-              <EditOutlined />
-            </NavLink> */}
-            <FilmModal maPhim={film.maPhim} />
+            <EditFilmModal film={film} />
             <Button
               type="danger"
               onClick={() => {
@@ -122,8 +120,7 @@ function Films() {
   };
   return (
     <div className="container">
-      <h3 className="display-4">Quản lý phim</h3>
-
+      <AddFilmModal />
       <Search
         placeholder="Tìm kiếm phim"
         enterButton={<SearchOutlined />}
@@ -141,4 +138,4 @@ function Films() {
   );
 }
 
-export default Films;
+export default FilmManagement;

@@ -59,17 +59,7 @@ const movieManagerReducer = (state = initialState, action) => {
       state.movieInfo = action.payload;
       return { ...state };
     }
-    case DELETE_MOVIE: {
-      const index = state.arrMovieDefault.findIndex(
-        (movie) => movie.maPhim === action.payload.maPhim
-      );
-      if (index !== -1) {
-        state.arrMovieDefault.slice(index, 1);
-        return { ...state };
-      }
 
-      return { ...state };
-    }
     default:
       return { ...state };
   }

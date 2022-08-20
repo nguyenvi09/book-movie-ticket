@@ -2,15 +2,13 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 import Loading from "./components/Layout/Loading";
-import Film from "./pages/Admin/Films";
+import Film from "./pages/Admin/FilmManagement";
 import Checkout from "./pages/Checkout";
 import Detail from "./pages/Detail";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AdminPage from "./pages/Admin";
-import AddNewFilm from "./pages/Admin/AddNewFilm";
-import EditFilm from "./pages/Admin/EditFilm";
 import Profile from "./pages/Profile";
 import UserManagement from "./pages/Admin/UserManagement";
 
@@ -31,10 +29,7 @@ function App() {
         <Route path="/profile" element={<Profile />}></Route>
 
         <Route path="/admin" element={<AdminPage />}>
-          <Route path="films" element={<Film />}>
-            <Route path="edit-film/:id" element={<EditFilm />} />
-          </Route>
-          <Route path="add-new-film" element={<AddNewFilm />} />
+          <Route path="films" element={<Film />} />
           <Route path="user-management" element={<UserManagement />} />
         </Route>
       </Routes>

@@ -7,10 +7,12 @@ import {
   deleteUserAction,
   getUserListAction,
 } from "../../../redux/actions/userManagementAction";
-import EditUserModal from "../../../components/EditUserModal";
+
 import AddUserModal from "../../../components/AddUserModal";
+import EditUserModal from "../../../components/Modal/EditUserModal";
 function UserManagement() {
   const { userList } = useSelector((state) => state.userManagerReducer);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserListAction());
@@ -106,7 +108,7 @@ function UserManagement() {
     <div className="container">
       <AddUserModal />
       <Search
-        placeholder="Tìm kiếm phim"
+        placeholder="Tìm kiếm người dùng"
         enterButton={<SearchOutlined />}
         size="large"
         onSearch={onSearch}

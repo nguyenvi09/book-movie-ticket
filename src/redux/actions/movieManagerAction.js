@@ -24,8 +24,10 @@ export const addMovieUploadPictureAction = (formData) => {
     try {
       let result = await movieManagerService.addMovieUploadPicture(formData);
       alert("Thêm phim thành công");
+      dispatch(getListMovieAction());
     } catch (errors) {
       console.log("error", errors);
+      alert("Lỗi: " + errors.response.data.message);
     }
   };
 };
@@ -64,10 +66,7 @@ export const deleteMovieAction = (maPhim) => {
     try {
       const result = await movieManagerService.deleteMovie(maPhim);
       alert("Xóa phim thành công!");
-      dispatch({
-        type: DELETE_MOVIE,
-        payload: result.data.content,
-      });
+      dispatch(getListMovieAction());
     } catch (errors) {
       console.log("errors", errors);
     }

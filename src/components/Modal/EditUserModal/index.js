@@ -4,8 +4,8 @@ import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import { Button, Modal } from "antd";
-import { GROUPID } from "../../util/settings/config";
-import { editUserAction } from "../../redux/actions/userManagementAction";
+import { GROUPID } from "../../../util/settings/config";
+import { editUserAction } from "../../../redux/actions/userManagementAction";
 
 const EditUserModal = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -20,7 +20,6 @@ const EditUserModal = (props) => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-
   const { user } = props;
   const formik = useFormik({
     initialValues: {

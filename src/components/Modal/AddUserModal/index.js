@@ -62,7 +62,11 @@ const AddUserModal = (props) => {
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
+      <Button
+        style={{ backgroundColor: "green" }}
+        type="primary"
+        onClick={showModal}
+      >
         Thêm người dùng
       </Button>
       <Modal
