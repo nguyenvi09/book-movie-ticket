@@ -4,11 +4,8 @@ import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import { Button, Modal } from "antd";
-import { GROUPID } from "../../util/settings/config";
-import {
-  addUserAction,
-  editUserAction,
-} from "../../redux/actions/userManagementAction";
+import { GROUPID } from "../../../util/settings/config";
+import { addUserAction } from "../../../redux/actions/userManagementAction";
 
 const AddUserModal = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);

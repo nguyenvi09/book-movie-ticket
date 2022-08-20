@@ -8,8 +8,8 @@ import {
   getUserListAction,
 } from "../../../redux/actions/userManagementAction";
 
-import AddUserModal from "../../../components/AddUserModal";
 import EditUserModal from "../../../components/Modal/EditUserModal";
+import AddUserModal from "../../../components/Modal/AddUserModal";
 function UserManagement() {
   const { userList } = useSelector((state) => state.userManagerReducer);
 
