@@ -27,7 +27,7 @@ export const addMovieUploadPictureAction = (formData) => {
       dispatch(getListMovieAction());
     } catch (errors) {
       console.log("error", errors);
-      alert("Lỗi: " + errors.response.data.message);
+      alert("Lỗi: " + errors.response.data.content);
     }
   };
 };
