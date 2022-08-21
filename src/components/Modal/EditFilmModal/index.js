@@ -110,7 +110,6 @@ const EditFilmModal = (props) => {
         Sửa
       </Button>
       <Modal visible={isModalVisible} onCancel={handleCancel} footer={null}>
-        {/* <EditFilm maPhim={props.maPhim} closeModal={handleCancel} /> */}
         <div className="container">
           <Form
             onSubmitCapture={formik.handleSubmit}

@@ -18,7 +18,7 @@ export const history = createBrowserHistory();
 function App() {
   return (
     <Suspense fallback={<LoadingIcon />}>
-      <BrowserRouter history={history}>
+      <BrowserRouter history={history} basename={process.env.PUBLIC_URL}>
         <Loading />
         <Routes>
           <Route path="/" element={<Home />}></Route>
