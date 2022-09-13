@@ -1,11 +1,11 @@
-import { ticketManagerService } from "../../services/TicketManagerService";
-import { ThongTinDatVe } from "../../_core/models/ThongTinDatVe";
+import { ticketManagerService } from '../../services/TicketManagerService';
+import { ThongTinDatVe } from '../../_core/models/ThongTinDatVe';
 import {
   CHUYEN_TAB,
   DAT_VE_HOAN_TAT,
   SET_CHI_TIET_PHONG_VE,
-} from "../contants/movie-booking";
-import { displayLoadingAction, hideLoadingAction } from "./loadingAction";
+} from '../contants/movie-booking';
+import { displayLoadingAction, hideLoadingAction } from './loadingAction';
 
 export const getOfficeDetailAction = (maLichChieu) => {
   return async (dispatch) => {
@@ -18,7 +18,7 @@ export const getOfficeDetailAction = (maLichChieu) => {
         });
       }
     } catch (error) {
-      console.log("error", error);
+      console.log('error', error);
     }
   };
 };
@@ -28,16 +28,18 @@ export const datVeAction = (thongTinDatVe = new ThongTinDatVe()) => {
     try {
       dispatch(displayLoadingAction);
       const result = await ticketManagerService.datVe(thongTinDatVe);
-      //Đặt vé thành công -> gọi lại api load lại trang phòng vé
-      await dispatch(getOfficeDetailAction(thongTinDatVe.maLichChieu));
-      await dispatch({
-        type: DAT_VE_HOAN_TAT,
-      });
-      await dispatch(hideLoadingAction);
-      dispatch({ type: CHUYEN_TAB });
+      if (result.status === 200) {
+        //Đặt vé thành công -> gọi lại api load lại trang phòng vé
+        await dispatch(getOfficeDetailAction(thongTinDatVe.maLichChieu));
+        await dispatch({
+          type: DAT_VE_HOAN_TAT,
+        });
+        await dispatch(hideLoadingAction);
+        dispatch({ type: CHUYEN_TAB });
+      }
     } catch (error) {
       dispatch(hideLoadingAction);
-      console.log("error", error);
+      console.log('error', error);
     }
   };
 };

@@ -1,10 +1,10 @@
-import React from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { NavLink } from "react-router-dom";
-import styles from "./Register.module.scss";
-import { useDispatch } from "react-redux";
-import { registerAccountAction } from "../../redux/actions/userManagementAction";
+import React from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { NavLink } from 'react-router-dom';
+import styles from './Register.module.scss';
+import { useDispatch } from 'react-redux';
+import { registerAccountAction } from '../../redux/actions/userManagementAction';
 function Register() {
   const dispatch = useDispatch();
   const phoneRegExp =
@@ -12,36 +12,35 @@ function Register() {
 
   const formik = useFormik({
     initialValues: {
-      taiKhoan: "",
-      matKhau: "",
-      hoTen: "",
-      email: "",
-      soDienThoai: "",
+      taiKhoan: '',
+      matKhau: '',
+      hoTen: '',
+      email: '',
+      soDienThoai: '',
     },
     validationSchema: Yup.object({
       taiKhoan: Yup.string()
-        .required("Tài khoản không được bỏ trống!")
-        .min(6, "Tài khoản tối thiểu 6 ký tự"),
-      matKhau: Yup.string().required("Mật khẩu không được bỏ trống!"),
-      hoTen: Yup.string().required("Họ tên không được bỏ trống!"),
+        .required('Tài khoản không được bỏ trống!')
+        .min(6, 'Tài khoản tối thiểu 6 ký tự'),
+      matKhau: Yup.string().required('Mật khẩu không được bỏ trống!'),
+      hoTen: Yup.string().required('Họ tên không được bỏ trống!'),
       email: Yup.string()
-        .required("Email không được bỏ trống!")
-        .email("Email không hợp lệ, ví dụ: example@gmail.com"),
+        .required('Email không được bỏ trống!')
+        .email('Email không hợp lệ, ví dụ: example@gmail.com'),
       soDienThoai: Yup.string()
-        .required("Số điện thoại không được bỏ trống!")
-        .max(10, "Tối ta 10 chữ số!")
-        .matches(phoneRegExp, "Số điện thoại không hợp lệ!"),
+        .required('Số điện thoại không được bỏ trống!')
+        .max(10, 'Tối ta 10 chữ số!')
+        .matches(phoneRegExp, 'Số điện thoại không hợp lệ!'),
     }),
     onSubmit: (values) => {
-      console.log(values);
       dispatch(registerAccountAction(values));
     },
   });
   return (
-    <div className={`${styles["register__background"]}`}>
+    <div className={`${styles['register__background']}`}>
       <form
         onSubmit={formik.handleSubmit}
-        className={`${styles["register__form"]}`}
+        className={`${styles['register__form']}`}
       >
         <div className="form-outline mb-4">
           <input
@@ -53,7 +52,7 @@ function Register() {
             placeholder="Tên đăng nhập"
           />
           {formik.errors.taiKhoan && (
-            <span style={{ fontSize: "1.6rem", color: "#ff0000c2" }}>
+            <span style={{ fontSize: '1.6rem', color: '#ff0000c2' }}>
               {formik.errors.taiKhoan}
             </span>
           )}
@@ -68,7 +67,7 @@ function Register() {
             placeholder="Nhập mật khẩu"
           />
           {formik.errors.matKhau && (
-            <span style={{ fontSize: "1.6rem", color: "#ff0000c2" }}>
+            <span style={{ fontSize: '1.6rem', color: '#ff0000c2' }}>
               {formik.errors.matKhau}
             </span>
           )}
@@ -83,7 +82,7 @@ function Register() {
             placeholder="Họ và tên"
           />
           {formik.errors.hoTen && (
-            <span style={{ fontSize: "1.6rem", color: "#ff0000c2" }}>
+            <span style={{ fontSize: '1.6rem', color: '#ff0000c2' }}>
               {formik.errors.hoTen}
             </span>
           )}
@@ -98,7 +97,7 @@ function Register() {
             placeholder="Nhập Email"
           />
           {formik.errors.email && (
-            <span style={{ fontSize: "1.6rem", color: "#ff0000c2" }}>
+            <span style={{ fontSize: '1.6rem', color: '#ff0000c2' }}>
               {formik.errors.email}
             </span>
           )}
@@ -113,7 +112,7 @@ function Register() {
             placeholder="Nhập số điện thoại"
           />
           {formik.errors.soDienThoai && (
-            <span style={{ fontSize: "1.6rem", color: "#ff0000c2" }}>
+            <span style={{ fontSize: '1.6rem', color: '#ff0000c2' }}>
               {formik.errors.soDienThoai}
             </span>
           )}
@@ -125,7 +124,7 @@ function Register() {
         </div>
         <span>Bạn đã có tài khoản? </span>
         <NavLink to="/login">Đăng nhập</NavLink>
-        <NavLink className={`${styles["close"]}`} to="/">
+        <NavLink className={`${styles['close']}`} to="/">
           X
         </NavLink>
       </form>

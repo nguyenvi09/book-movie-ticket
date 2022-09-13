@@ -1,19 +1,15 @@
-import { GROUPID } from "../util/settings/config";
-import { BaseService } from "./BaseService";
+import { GROUPID } from '../util/settings/config';
+import { BaseService } from './BaseService';
 
 export class MovieManagerService extends BaseService {
-  constructor() {
-    super();
-  }
-
   getBanners = () => {
     return this.get(`/api/QuanLyPhim/LayDanhSachBanner`);
   };
 
-  getListMovie = (tenPhim = "") => {
-    if (tenPhim.trim() !== "") {
+  getListMovie = (tenPhim = '') => {
+    if (tenPhim.trim() !== '') {
       return this.get(
-        `/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}&tenPhim=${tenPhim}`
+        `/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}&tenPhim=${tenPhim}`,
       );
     }
     return this.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}`);

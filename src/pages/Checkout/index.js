@@ -1,30 +1,30 @@
-import React, { Fragment, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Navigate, NavLink, useParams } from "react-router-dom";
+import React, { Fragment, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Navigate, NavLink, useParams } from 'react-router-dom';
 import {
   datVeAction,
   getOfficeDetailAction,
-} from "../../redux/actions/ticketManagerAction";
-import { USER_LOGIN } from "../../util/settings/config";
-import "./checkout.scss";
+} from '../../redux/actions/ticketManagerAction';
+import { USER_LOGIN } from '../../util/settings/config';
+import './checkout.scss';
 import {
   CloseOutlined,
   UserOutlined,
   CheckOutlined,
   HomeOutlined,
-} from "@ant-design/icons";
-import { DAT_VE } from "../../redux/contants/movie-booking";
-import { ThongTinDatVe } from "../../_core/models/ThongTinDatVe";
-import { Tabs } from "antd";
-import moment from "moment";
-import _ from "lodash";
-import { getUserInfoAction } from "../../redux/actions/userManagementAction";
-import UserAccount from "../../components/Layout/UserAccount";
+} from '@ant-design/icons';
+import { DAT_VE } from '../../redux/contants/movie-booking';
+import { ThongTinDatVe } from '../../_core/models/ThongTinDatVe';
+import { Tabs } from 'antd';
+import moment from 'moment';
+import _ from 'lodash';
+import { getUserInfoAction } from '../../redux/actions/userManagementAction';
+import UserAccount from '../../components/Layout/UserAccount/UserAccount';
 
 function Checkout(props) {
   const { userLogin } = useSelector((state) => state.userManagerReducer);
   const { chiTietPhongVe, danhSachGheDangDat } = useSelector(
-    (state) => state.ticketManagerReducer
+    (state) => state.ticketManagerReducer,
   );
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -42,19 +42,19 @@ function Checkout(props) {
 
   const renderSeats = () => {
     return danhSachGhe.map((ghe, index) => {
-      let classGheVip = ghe.loaiGhe === "Vip" ? "gheVip" : "";
-      let classGheDaDat = ghe.daDat === true ? "gheDaDat" : "";
+      let classGheVip = ghe.loaiGhe === 'Vip' ? 'gheVip' : '';
+      let classGheDaDat = ghe.daDat === true ? 'gheDaDat' : '';
       let indexGheDD = danhSachGheDangDat.findIndex(
-        (gheDD) => gheDD.maGhe === ghe.maGhe
+        (gheDD) => gheDD.maGhe === ghe.maGhe,
       );
 
-      let classGheDaDuocDat = "";
+      let classGheDaDuocDat = '';
       if (userLogin.taiKhoan === ghe.taiKhoanNguoiDat) {
-        classGheDaDuocDat = "gheDaDuocDat";
+        classGheDaDuocDat = 'gheDaDuocDat';
       }
 
       if (indexGheDD !== -1) {
-        classGheDaDat = "gheDangDat";
+        classGheDaDat = 'gheDangDat';
       }
 
       return (
@@ -71,7 +71,7 @@ function Checkout(props) {
             key={index}
           >
             {ghe.daDat ? (
-              classGheDaDuocDat !== "" ? (
+              classGheDaDuocDat !== '' ? (
                 <UserOutlined />
               ) : (
                 <CloseOutlined />
@@ -80,7 +80,7 @@ function Checkout(props) {
               ghe.stt
             )}
           </button>
-          {(index + 1) % 16 === 0 ? <br /> : ""}
+          {(index + 1) % 16 === 0 ? <br /> : ''}
         </Fragment>
       );
     });
@@ -109,50 +109,50 @@ function Checkout(props) {
                 <tr>
                   <td>
                     <button className="ghe text-center">
-                      {" "}
+                      {' '}
                       <CheckOutlined
-                        style={{ marginBottom: 7.5, fontWeight: "bold" }}
-                      />{" "}
-                    </button>{" "}
+                        style={{ marginBottom: 7.5, fontWeight: 'bold' }}
+                      />{' '}
+                    </button>{' '}
                   </td>
                   <td>
                     <button className="ghe gheDangDat text-center">
-                      {" "}
+                      {' '}
                       <CheckOutlined
-                        style={{ marginBottom: 7.5, fontWeight: "bold" }}
+                        style={{ marginBottom: 7.5, fontWeight: 'bold' }}
                       />
-                    </button>{" "}
+                    </button>{' '}
                   </td>
                   <td>
                     <button className="ghe gheVip text-center">
                       <CheckOutlined
-                        style={{ marginBottom: 7.5, fontWeight: "bold" }}
+                        style={{ marginBottom: 7.5, fontWeight: 'bold' }}
                       />
-                    </button>{" "}
+                    </button>{' '}
                   </td>
                   <td>
                     <button className="ghe gheDaDat text-center">
-                      {" "}
+                      {' '}
                       <CloseOutlined
-                        style={{ marginBottom: 7.5, fontWeight: "bold" }}
-                      />{" "}
-                    </button>{" "}
+                        style={{ marginBottom: 7.5, fontWeight: 'bold' }}
+                      />{' '}
+                    </button>{' '}
                   </td>
                   <td>
                     <button className="ghe gheDaDuocDat text-center">
-                      {" "}
+                      {' '}
                       <UserOutlined
-                        style={{ marginBottom: 7.5, fontWeight: "bold" }}
-                      />{" "}
-                    </button>{" "}
+                        style={{ marginBottom: 7.5, fontWeight: 'bold' }}
+                      />{' '}
+                    </button>{' '}
                   </td>
                   <td>
                     <button className="ghe gheKhachDat text-center">
-                      {" "}
+                      {' '}
                       <CheckOutlined
-                        style={{ marginBottom: 7.5, fontWeight: "bold" }}
-                      />{" "}
-                    </button>{" "}
+                        style={{ marginBottom: 7.5, fontWeight: 'bold' }}
+                      />{' '}
+                    </button>{' '}
                   </td>
                 </tr>
               </tbody>
@@ -162,34 +162,34 @@ function Checkout(props) {
         <div className="col-3 text-white">
           <div
             style={{
-              backgroundColor: "#00000069",
-              padding: "10px",
-              borderRadius: "5px",
+              backgroundColor: '#00000069',
+              padding: '10px',
+              borderRadius: '5px',
             }}
           >
             <h2 className="text-white text-center">{thongTinPhim.tenPhim}</h2>
             <p>
-              <span className="text-secondary">Ngày giờ chiếu:</span>{" "}
+              <span className="text-secondary">Ngày giờ chiếu:</span>{' '}
               {thongTinPhim.ngayChieu} -{thongTinPhim.gioChieu}
             </p>
             <p>
-              <span className="text-secondary">Cụm rạp:</span>{" "}
+              <span className="text-secondary">Cụm rạp:</span>{' '}
               {thongTinPhim.tenCumRap}
             </p>
             <p>
               <span className="text-secondary">Rạp:</span> {thongTinPhim.tenRap}
             </p>
             <div className="row">
-              <div className="col-12" style={{ minHeight: "70px" }}>
+              <div className="col-12" style={{ minHeight: '70px' }}>
                 <span className="text-secondary">Ghế chọn: </span>
                 <span>
                   {danhSachGheDangDat.map((gheDD, index) => {
                     return (
                       <span key={index} className="text-success">
                         G{gheDD.stt}
-                        {"-"}
+                        {'-'}
                         {gheDD.giaVe.toLocaleString()}
-                        {"đ "}
+                        {'đ '}
                       </span>
                     );
                   })}
@@ -198,7 +198,7 @@ function Checkout(props) {
             </div>
             <hr />
             <h3 className="display-5 text-white">
-              <span className="text-secondary">Tổng tiền:</span>{" "}
+              <span className="text-secondary">Tổng tiền:</span>{' '}
               {danhSachGheDangDat
                 .reduce((tongTien, ghe) => {
                   return (tongTien += ghe.giaVe);
@@ -208,7 +208,7 @@ function Checkout(props) {
             </h3>
             <div className="d-flex justify-content-center mt-5">
               <button
-                style={{ fontSize: "2rem", width: "100%", fontWeight: "700" }}
+                style={{ fontSize: '2rem', width: '100%', fontWeight: '700' }}
                 className="btn btn-danger px-3"
                 onClick={() => {
                   const thongTinDatVe = new ThongTinDatVe();
@@ -246,7 +246,7 @@ export default function CheckoutTab(props) {
           <UserAccount user={userLogin} />
         </NavLink>
       ) : (
-        ""
+        ''
       )}
     </Fragment>
   );
@@ -254,12 +254,12 @@ export default function CheckoutTab(props) {
     <div className="p-5 bg-checkout">
       <Tabs
         tabBarExtraContent={operation}
-        tabBarStyle={{ color: "white" }}
+        tabBarStyle={{ color: 'white' }}
         defaultActiveKey="1"
         activeKey={tabActive}
         onChange={(key) => {
           dispatch({
-            type: "CHANGE_TAB_ACTIVE",
+            type: 'CHANGE_TAB_ACTIVE',
             number: key.toString(),
           });
         }}
@@ -272,7 +272,7 @@ export default function CheckoutTab(props) {
         </TabPane>
         <TabPane
           tab={
-            <NavLink style={{ color: "var(--primary-color)" }} to="/">
+            <NavLink style={{ color: 'var(--primary-color)' }} to="/">
               Trang chủ
             </NavLink>
           }
@@ -286,7 +286,7 @@ export default function CheckoutTab(props) {
 function TicketBookingResults(props) {
   const dispatch = useDispatch();
   const { thongTinNguoiDung } = useSelector(
-    (state) => state.userManagerReducer
+    (state) => state.userManagerReducer,
   );
 
   useEffect(() => {
@@ -300,38 +300,38 @@ function TicketBookingResults(props) {
       return (
         <div
           style={{
-            display: "flex",
-            gap: "20px",
-            border: "1px solid white",
-            borderRadius: "10px",
-            overflow: "hidden",
+            display: 'flex',
+            gap: '20px',
+            border: '1px solid white',
+            borderRadius: '10px',
+            overflow: 'hidden',
           }}
           key={index}
         >
           <img
             alt={ticket.tenPhim}
-            style={{ width: "20%" }}
+            style={{ width: '20%' }}
             src={ticket.hinhAnh}
           />
           <div className="text-white">
             <h1 className="text-white">{ticket.tenPhim}</h1>
             <p className="text-gray-500">
-              <span className="font-bold">Giờ chiếu:</span>{" "}
-              {moment(ticket.ngayDat).format("hh:mm A")} -{" "}
-              <span className="font-bold">Ngày chiếu:</span>{" "}
-              {moment(ticket.ngayDat).format("DD-MM-YYYY")}
+              <span className="font-bold">Giờ chiếu:</span>{' '}
+              {moment(ticket.ngayDat).format('hh:mm A')} -{' '}
+              <span className="font-bold">Ngày chiếu:</span>{' '}
+              {moment(ticket.ngayDat).format('DD-MM-YYYY')}
             </p>
             <p>
-              <span className="font-bold">Địa điểm:</span> {seats.tenHeThongRap}{" "}
+              <span className="font-bold">Địa điểm:</span> {seats.tenHeThongRap}{' '}
             </p>
             <p>
-              <span className="font-bold">Tên rạp:</span> {seats.tenCumRap} -{" "}
-              <span className="font-bold">Ghế:</span>{" "}
+              <span className="font-bold">Tên rạp:</span> {seats.tenCumRap} -{' '}
+              <span className="font-bold">Ghế:</span>{' '}
               {ticket.danhSachGhe.map((ghe, index) => {
                 return (
                   <span className="text-green-500 text-xl" key={index}>
-                    {" "}
-                    [ {ghe.tenGhe} ]{" "}
+                    {' '}
+                    [ {ghe.tenGhe} ]{' '}
                   </span>
                 );
               })}
@@ -345,7 +345,7 @@ function TicketBookingResults(props) {
   return (
     <div className="p-5 container">
       <div className="text-center mb-5">
-        <h1 style={{ fontSize: "4rem", fontWeight: "900", color: "white" }}>
+        <h1 style={{ fontSize: '4rem', fontWeight: '900', color: 'white' }}>
           Lịch sử đặt vé khách hàng
         </h1>
       </div>

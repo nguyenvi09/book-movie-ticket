@@ -1,6 +1,6 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import AppImages from "../../AppImages/AppImages";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import AppImages from '../../AppImages/AppImages';
 
 function Footer(props) {
   const { cinemaSystem } = useSelector((state) => state.theaterManagerReducer);
@@ -10,7 +10,7 @@ function Footer(props) {
       return (
         <li key={index}>
           <img
-            style={{ width: "60px" }}
+            style={{ width: '60px' }}
             src={item.logo}
             alt="item.maHeThongRap"
           />
@@ -22,7 +22,7 @@ function Footer(props) {
     <div id="contact" className=" my-5">
       <footer
         className="text-center text-lg-start text-white"
-        style={{ backgroundColor: "#222222" }}
+        style={{ backgroundColor: '#222222' }}
       >
         <div className="container p-4 pb-0">
           <section className>
@@ -38,9 +38,9 @@ function Footer(props) {
                 </h1>
                 <ul
                   style={{
-                    display: "grid",
-                    gridTemplateColumns: "auto auto auto",
-                    gap: "20px",
+                    display: 'grid',
+                    gridTemplateColumns: 'auto auto auto',
+                    gap: '20px',
                   }}
                 >
                   {renderCinema()}
@@ -76,23 +76,27 @@ function Footer(props) {
                 <a
                   className="btn btn-outline-light btn-floating m-1"
                   role="button"
+                  href="#"
                 >
                   <i className="fab fa-facebook-f" />
                 </a>
                 <a
                   className="btn btn-outline-light btn-floating m-1"
+                  href="#"
                   role="button"
                 >
                   <i className="fab fa-twitter" />
                 </a>
                 <a
                   className="btn btn-outline-light btn-floating m-1"
+                  href="#"
                   role="button"
                 >
                   <i className="fab fa-google" />
                 </a>
                 <a
                   className="btn btn-outline-light btn-floating m-1"
+                  href="#"
                   role="button"
                 >
                   <i className="fab fa-instagram" />

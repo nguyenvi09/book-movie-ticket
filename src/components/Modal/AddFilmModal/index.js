@@ -1,21 +1,11 @@
-import { Button, Modal } from "antd";
-import {
-  Cascader,
-  DatePicker,
-  Form,
-  Input,
-  InputNumber,
-  Radio,
-  Select,
-  Switch,
-  TreeSelect,
-} from "antd";
-import { useFormik } from "formik";
-import moment from "moment";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addMovieUploadPictureAction } from "../../../redux/actions/movieManagerAction";
-import { GROUPID } from "../../../util/settings/config";
+import { Button, Modal } from 'antd';
+import { DatePicker, Form, Input, InputNumber, Switch } from 'antd';
+import { useFormik } from 'formik';
+import moment from 'moment';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addMovieUploadPictureAction } from '../../../redux/actions/movieManagerAction';
+import { GROUPID } from '../../../util/settings/config';
 
 const AddFilmModal = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -28,16 +18,16 @@ const AddFilmModal = () => {
     setIsModalVisible(false);
   };
 
-  const [componentSize, setComponentSize] = useState("default");
-  const [imgSrc, setImgSrc] = useState("");
+  const [componentSize, setComponentSize] = useState('default');
+  const [imgSrc, setImgSrc] = useState('');
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       maNhom: GROUPID,
-      tenPhim: "",
-      trailer: "",
-      moTa: "",
-      ngayKhoiChieu: "",
+      tenPhim: '',
+      trailer: '',
+      moTa: '',
+      ngayKhoiChieu: '',
       dangChieu: false,
       sapChieu: false,
       hot: false,
@@ -50,10 +40,10 @@ const AddFilmModal = () => {
       //Tạo đối tượng formdata => Đưa giá trị values từ formik vào formdata
       let formData = new FormData();
       for (let key in values) {
-        if (key !== "hinhAnh") {
+        if (key !== 'hinhAnh') {
           formData.append(key, values[key]);
         } else {
-          formData.append("File", values.hinhAnh, values.hinhAnh.name);
+          formData.append('File', values.hinhAnh, values.hinhAnh.name);
         }
       }
 
@@ -65,8 +55,8 @@ const AddFilmModal = () => {
 
   const handleChangeDatePicker = (value) => {
     //chuyển đổi object moment thành chuỗi để gửi đi
-    let ngayKhoiChieu = moment(value).format("DD/MM/YYYY");
-    formik.setFieldValue("ngayKhoiChieu", ngayKhoiChieu);
+    let ngayKhoiChieu = moment(value).format('DD/MM/YYYY');
+    formik.setFieldValue('ngayKhoiChieu', ngayKhoiChieu);
   };
 
   const handleChangeSwitch = (name) => {
@@ -81,10 +71,10 @@ const AddFilmModal = () => {
     //Lấy file ra từ e
     let file = e.target.files[0];
     if (
-      file.type === "image/jpeg" ||
-      file.type === "image/jpg" ||
-      file.type === "image/gif" ||
-      file.type === "image/png"
+      file.type === 'image/jpeg' ||
+      file.type === 'image/jpg' ||
+      file.type === 'image/gif' ||
+      file.type === 'image/png'
     ) {
       //Tạo đối tượng để đọc file
       let reader = new FileReader();
@@ -93,7 +83,7 @@ const AddFilmModal = () => {
         setImgSrc(e.target.result);
       };
       //Đem dữ liệu file lưu vào formik
-      formik.setFieldValue("hinhAnh", file);
+      formik.setFieldValue('hinhAnh', file);
     }
   };
 
@@ -104,7 +94,7 @@ const AddFilmModal = () => {
   return (
     <>
       <Button
-        style={{ backgroundColor: "green" }}
+        style={{ backgroundColor: 'green' }}
         type="primary"
         onClick={showModal}
       >
@@ -139,23 +129,23 @@ const AddFilmModal = () => {
             </Form.Item>
             <Form.Item label="Ngày khởi chiếu">
               <DatePicker
-                format={"DD/MM/YYYY"}
+                format={'DD/MM/YYYY'}
                 onChange={handleChangeDatePicker}
               />
             </Form.Item>
             <Form.Item label="Đang chiếu">
-              <Switch onChange={handleChangeSwitch("dangChieu")} />
+              <Switch onChange={handleChangeSwitch('dangChieu')} />
             </Form.Item>
             <Form.Item label="Sắp chiếu">
-              <Switch onChange={handleChangeSwitch("sapChieu")} />
+              <Switch onChange={handleChangeSwitch('sapChieu')} />
             </Form.Item>
             <Form.Item label="Hot">
-              <Switch onChange={handleChangeSwitch("hot")} />
+              <Switch onChange={handleChangeSwitch('hot')} />
             </Form.Item>
 
             <Form.Item label="Số sao">
               <InputNumber
-                onChange={handleChangeInputNumber("danhGia")}
+                onChange={handleChangeInputNumber('danhGia')}
                 min={1}
                 max={10}
               />
@@ -175,7 +165,7 @@ const AddFilmModal = () => {
                 accept="image/png, image/jpeg,image/gif,image/png"
               />
             </Form.Item>
-            <div style={{ textAlign: "right" }}>
+            <div style={{ textAlign: 'right' }}>
               <button type="submit" className="bg-success text-white p-2">
                 Thêm phim
               </button>

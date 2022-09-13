@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
-import { history } from "../../App";
-import { userManagementService } from "../../services/UserManagementService";
+import { history } from '../../App';
+import { userManagementService } from '../../services/UserManagementService';
 import {
   DANG_NHAP_ACTION,
   SET_THONG_TIN_NGUOI_DUNG,
-} from "../contants/movie-booking";
+} from '../contants/movie-booking';
 
 export const logInAction = (logInInfo) => {
   return async (dispatch) => {
@@ -15,12 +14,12 @@ export const logInAction = (logInInfo) => {
           type: DANG_NHAP_ACTION,
           data: result.data.content,
         });
-        window.alert("Đăng nhập thành công");
+        window.alert('Đăng nhập thành công');
         history.back();
       }
     } catch (error) {
-      window.alert("Tài khoản hoặc mật khẩu không đúng");
-      console.log("error", error);
+      window.alert('Tài khoản hoặc mật khẩu không đúng');
+      console.log('error', error);
     }
   };
 };
@@ -36,7 +35,7 @@ export const getUserInfoAction = () => {
         });
       }
     } catch (error) {
-      console.log("error", error);
+      console.log('error', error);
     }
   };
 };
@@ -51,10 +50,10 @@ export const registerAccountAction = (registerInfo) => {
           data: result.data.content,
         });
         history.back();
-        window.alert("Đăng ký thành công");
+        window.alert('Đăng ký thành công');
       }
     } catch (errors) {
-      console.log("errors", errors);
+      console.log('errors', errors);
     }
   };
 };
@@ -64,28 +63,28 @@ export const updateAccountAction = (updateInfo) => {
     try {
       const result = await userManagementService.updateAccount(updateInfo);
       dispatch({
-        type: "UPDATE_ACCOUNT",
+        type: 'UPDATE_ACCOUNT',
         payload: result.data.content,
       });
-      window.alert("Cập nhật thành công!");
+      window.alert('Cập nhật thành công!');
     } catch (errors) {
-      console.log("errors", errors);
+      console.log('errors', errors);
     }
   };
 };
 
-export const getUserListAction = (tuKhoa = "") => {
+export const getUserListAction = (tuKhoa = '') => {
   return async (dispatch) => {
     try {
       const result = await userManagementService.getUserList(tuKhoa);
       if (result.data.statusCode === 200) {
         dispatch({
-          type: "SET_DANH_SACH_NGUOI_DUNG",
+          type: 'SET_DANH_SACH_NGUOI_DUNG',
           payload: result.data.content,
         });
       }
     } catch (error) {
-      console.log("error", error);
+      console.log('error', error);
     }
   };
 };
@@ -95,12 +94,12 @@ export const deleteUserAction = (taiKhoan) => {
     try {
       const result = await userManagementService.deleteUser(taiKhoan);
       if (result.data.statusCode === 200) {
-        alert("Xóa thành công!");
+        alert('Xóa thành công!');
         dispatch(getUserListAction());
       }
     } catch (error) {
       alert(error.response.data.content);
-      console.log("error", error);
+      console.log('error', error);
     }
   };
 };
@@ -109,10 +108,12 @@ export const editUserAction = (user) => {
   return async (dispatch) => {
     try {
       const result = await userManagementService.editUser(user);
-      alert("Cập nhật thành công!");
-      dispatch(getUserListAction());
+      if (result.status === 200) {
+        alert('Cập nhật thành công!');
+        dispatch(getUserListAction());
+      }
     } catch (errors) {
-      console.log("errors", errors);
+      console.log('errors', errors);
     }
   };
 };
@@ -121,10 +122,12 @@ export const addUserAction = (user) => {
   return async (dispatch) => {
     try {
       const result = await userManagementService.addUser(user);
-      dispatch(getUserListAction());
-      alert("Thêm mới thành công!");
+      if (result.status === 200) {
+        dispatch(getUserListAction());
+        alert('Thêm mới thành công!');
+      }
     } catch (error) {
-      alert("Lỗi: " + error.response.data.content);
+      alert('Lỗi: ' + error.response.data.content);
     }
   };
 };

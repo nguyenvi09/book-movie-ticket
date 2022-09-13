@@ -1,11 +1,10 @@
 import {
-  DELETE_MOVIE,
   GET_LIST_MOVIE,
   SET_CHI_TIET_PHIM,
   SET_FILM_DANG_CHIEU,
   SET_FILM_SAP_CHIEU,
   SET_MOVIE_INFO,
-} from "../contants/movie-booking";
+} from '../contants/movie-booking';
 
 const initialState = {
   arrMovie: [],
@@ -13,8 +12,8 @@ const initialState = {
   sapChieu: true,
   arrMovieDefault: [],
   movieDetail: {},
-  movieTrailer: "",
-  displayTrailer: "none",
+  movieTrailer: '',
+  displayTrailer: 'none',
   movieInfo: {},
 };
 
@@ -29,7 +28,7 @@ const movieManagerReducer = (state = initialState, action) => {
       state.dangChieu = !state.dangChieu;
 
       state.arrMovie = state.arrMovieDefault.filter(
-        (movie) => movie.dangChieu === state.dangChieu
+        (movie) => movie.dangChieu === state.dangChieu,
       );
       return { ...state };
     }
@@ -37,7 +36,7 @@ const movieManagerReducer = (state = initialState, action) => {
       state.sapChieu = !state.sapChieu;
 
       state.arrMovie = state.arrMovieDefault.filter(
-        (movie) => movie.sapChieu === state.sapChieu
+        (movie) => movie.sapChieu === state.sapChieu,
       );
       return { ...state };
     }
@@ -45,13 +44,13 @@ const movieManagerReducer = (state = initialState, action) => {
       state.movieDetail = action.data;
       return { ...state };
     }
-    case "SEND_TRAILER": {
+    case 'SEND_TRAILER': {
       state.movieTrailer = action.payload.trailer;
       state.displayTrailer = action.payload.display;
       return { ...state };
     }
-    case "CLOSE_MODAL_TRAILER": {
-      state.movieTrailer = "";
+    case 'CLOSE_MODAL_TRAILER': {
+      state.movieTrailer = '';
       state.displayTrailer = action.display;
       return { ...state };
     }

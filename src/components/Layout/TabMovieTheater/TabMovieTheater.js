@@ -1,8 +1,8 @@
-import React, { Fragment } from "react";
-import { Tabs } from "antd";
-import { NavLink } from "react-router-dom";
-import moment from "moment";
-import styles from "./TabMovieTheater.module.scss";
+import React, { Fragment } from 'react';
+import { Tabs } from 'antd';
+import { NavLink } from 'react-router-dom';
+import moment from 'moment';
+import styles from './TabMovieTheater.module.scss';
 const { TabPane } = Tabs;
 
 function TabMovieTheater(props) {
@@ -12,8 +12,9 @@ function TabMovieTheater(props) {
         <TabPane
           tab={
             <img
+              alt={theaterSystem.tenCumRap}
               src={theaterSystem.logo}
-              className={`rounded-full ${styles["theater__logo"]}`}
+              className={`rounded-full ${styles['theater__logo']}`}
             />
           }
           key={index}
@@ -25,14 +26,14 @@ function TabMovieTheater(props) {
                   tab={
                     <div
                       style={{
-                        width: "350px",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "3px",
+                        width: '350px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '3px',
                       }}
                     >
                       <img src={theaterSystem.logo} width="50px" /> <br />
-                      <div style={{ fontSize: "1.7rem", fontWeight: "600" }}>
+                      <div style={{ fontSize: '1.7rem', fontWeight: '600' }}>
                         {theaterCluster.tenCumRap}
                       </div>
                     </div>
@@ -47,8 +48,8 @@ function TabMovieTheater(props) {
                           <div className="my-5">
                             <div
                               style={{
-                                display: "flex",
-                                gap: "8px",
+                                display: 'flex',
+                                gap: '8px',
                               }}
                             >
                               <img
@@ -57,7 +58,7 @@ function TabMovieTheater(props) {
                                 alt={film.tenPhim}
                                 onError={(e) => {
                                   e.target.onerror = null;
-                                  e.target.src = "https://picsum.photos/75/75";
+                                  e.target.src = 'https://picsum.photos/75/75';
                                 }}
                               />
 
@@ -68,10 +69,10 @@ function TabMovieTheater(props) {
                                 <p>{theaterCluster.diaChi}</p>
                                 <div
                                   style={{
-                                    display: "grid",
-                                    gap: "20px",
+                                    display: 'grid',
+                                    gap: '20px',
                                     gridTemplateColumns:
-                                      "auto auto auto auto auto auto",
+                                      'auto auto auto auto auto auto',
                                   }}
                                 >
                                   {film.lstLichChieuTheoPhim
@@ -80,19 +81,19 @@ function TabMovieTheater(props) {
                                       return (
                                         <NavLink
                                           style={{
-                                            padding: "3px",
+                                            padding: '3px',
                                             border:
-                                              "1.5px solid var(--primary-color)",
-                                            borderRadius: "5px",
-                                            color: "var(--primary-color)",
+                                              '1.5px solid var(--primary-color)',
+                                            borderRadius: '5px',
+                                            color: 'var(--primary-color)',
                                             fontWeight: 600,
                                           }}
                                           to={`/checkout/${showTime.maLichChieu}`}
                                           key={index}
                                         >
                                           {moment(
-                                            showTime.ngayChieuGioChieu
-                                          ).format("hh:mm A")}
+                                            showTime.ngayChieuGioChieu,
+                                          ).format('hh:mm A')}
                                         </NavLink>
                                       );
                                     })}

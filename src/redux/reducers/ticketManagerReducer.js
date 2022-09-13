@@ -1,15 +1,15 @@
-import { ThongTinLichChieu } from "../../_core/models/ThongTinPhongVe";
+import { ThongTinLichChieu } from '../../_core/models/ThongTinPhongVe';
 import {
   CHUYEN_TAB,
   DAT_VE,
   DAT_VE_HOAN_TAT,
   SET_CHI_TIET_PHONG_VE,
-} from "../contants/movie-booking";
+} from '../contants/movie-booking';
 
 const initialState = {
   chiTietPhongVe: new ThongTinLichChieu(),
   danhSachGheDangDat: [],
-  tabActive: "1",
+  tabActive: '1',
 };
 const ticketManagerReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -21,9 +21,9 @@ const ticketManagerReducer = (state = initialState, action) => {
       let danhSachGheCapNhat = [...state.danhSachGheDangDat];
 
       let index = danhSachGheCapNhat.findIndex(
-        (gheDD) => gheDD.maGhe === action.gheDuocChon.maGhe
+        (gheDD) => gheDD.maGhe === action.gheDuocChon.maGhe,
       );
-      if (index != -1) {
+      if (index !== -1) {
         //nếu tìm thấy ghế được chọn trong mảng có nghĩa là trước đó đã click vào rồi -> xóa đi
         danhSachGheCapNhat.splice(index, 1);
       } else {
@@ -36,9 +36,9 @@ const ticketManagerReducer = (state = initialState, action) => {
       return { ...state, danhSachGheDangDat: [] };
     }
     case CHUYEN_TAB: {
-      return { ...state, tabActive: "2" };
+      return { ...state, tabActive: '2' };
     }
-    case "CHANGE_TAB_ACTIVE": {
+    case 'CHANGE_TAB_ACTIVE': {
       state.tabActive = action.number;
       return { ...state };
     }

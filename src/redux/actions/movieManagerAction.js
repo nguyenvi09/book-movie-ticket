@@ -1,11 +1,7 @@
-import {
-  DELETE_MOVIE,
-  GET_LIST_MOVIE,
-  SET_MOVIE_INFO,
-} from "../contants/movie-booking";
-import { movieManagerService } from "../../services/MovieManagerService";
+import { GET_LIST_MOVIE, SET_MOVIE_INFO } from '../contants/movie-booking';
+import { movieManagerService } from '../../services/MovieManagerService';
 
-export const getListMovieAction = (tenPhim = "") => {
+export const getListMovieAction = (tenPhim = '') => {
   return async (dispatch) => {
     try {
       const result = await movieManagerService.getListMovie(tenPhim);
@@ -14,7 +10,7 @@ export const getListMovieAction = (tenPhim = "") => {
         data: result.data.content,
       });
     } catch (errors) {
-      console.log("error", errors);
+      console.log('error', errors);
     }
   };
 };
@@ -23,11 +19,13 @@ export const addMovieUploadPictureAction = (formData) => {
   return async (dispatch) => {
     try {
       let result = await movieManagerService.addMovieUploadPicture(formData);
-      alert("Thêm phim thành công");
-      dispatch(getListMovieAction());
+      if (result.status === 200) {
+        alert('Thêm phim thành công');
+        dispatch(getListMovieAction());
+      }
     } catch (errors) {
-      console.log("error", errors);
-      alert("Lỗi: " + errors.response.data.content);
+      console.log('error', errors);
+      alert('Lỗi: ' + errors.response.data.content);
     }
   };
 };
@@ -36,12 +34,12 @@ export const updateMovieUploadAction = (formData) => {
   return async (dispatch) => {
     try {
       let result = await movieManagerService.updateMovieUpload(formData);
-      if (result.data.statusCode == 200) {
-        alert("Cập nhật phim thành công");
+      if (result.data.statusCode === 200) {
+        alert('Cập nhật phim thành công');
         dispatch(getListMovieAction());
       }
     } catch (errors) {
-      console.log("error", errors);
+      console.log('error', errors);
       alert(errors.response?.data.content);
     }
   };
@@ -56,7 +54,7 @@ export const getMovieInfoAction = (maPhim) => {
         payload: result.data.content,
       });
     } catch (errors) {
-      console.log("errors", errors);
+      console.log('errors', errors);
     }
   };
 };
@@ -65,10 +63,12 @@ export const deleteMovieAction = (maPhim) => {
   return async (dispatch) => {
     try {
       const result = await movieManagerService.deleteMovie(maPhim);
-      alert("Xóa phim thành công!");
-      dispatch(getListMovieAction());
+      if (result.status === 200) {
+        alert('Xóa phim thành công!');
+        dispatch(getListMovieAction());
+      }
     } catch (errors) {
-      console.log("errors", errors);
+      console.log('errors', errors);
     }
   };
 };

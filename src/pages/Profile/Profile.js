@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import Footer from '../../components/Layout/Footer/Footer';
-import Header from '../../components/Layout/Header/Header';
 import styles from './Profile.module.scss';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';

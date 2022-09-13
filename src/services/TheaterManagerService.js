@@ -1,13 +1,9 @@
-import { BaseService } from "./BaseService";
-import { GROUPID } from "../util/settings/config";
+import { BaseService } from './BaseService';
+import { GROUPID } from '../util/settings/config';
 export class TheaterManagerService extends BaseService {
-  constructor() {
-    super();
-  }
-
   layDanhSachHeThongRap = () => {
     return this.get(
-      `/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUPID}`
+      `/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUPID}`,
     );
   };
 
@@ -20,7 +16,7 @@ export class TheaterManagerService extends BaseService {
   };
   layThongTinCumRap = (maHeThongRap) => {
     return this.get(
-      `/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`
+      `/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`,
     );
   };
 }

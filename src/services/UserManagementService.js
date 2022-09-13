@@ -1,11 +1,6 @@
-import { relativeTimeRounding } from "moment";
-import { GROUPID } from "../util/settings/config";
-import { BaseService } from "./BaseService";
+import { GROUPID } from '../util/settings/config';
+import { BaseService } from './BaseService';
 export class UserManagementService extends BaseService {
-  constructor() {
-    super();
-  }
-
   logIn = (logInInfo) => {
     return this.post(`/api/QuanLyNguoiDung/DangNhap`, logInInfo);
   };
@@ -21,24 +16,24 @@ export class UserManagementService extends BaseService {
   updateAccount = (updateInfo) => {
     return this.put(
       `/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
-      updateInfo
+      updateInfo,
     );
   };
 
-  getUserList = (tuKhoa = "") => {
-    if (tuKhoa.trim() !== "") {
+  getUserList = (tuKhoa = '') => {
+    if (tuKhoa.trim() !== '') {
       return this.get(
-        `/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUPID}&tuKhoa=${tuKhoa}`
+        `/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUPID}&tuKhoa=${tuKhoa}`,
       );
     }
     return this.get(
-      `/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUPID}`
+      `/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUPID}`,
     );
   };
 
   deleteUser = (taiKhoan) => {
     return this.delete(
-      `/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`
+      `/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
     );
   };
 

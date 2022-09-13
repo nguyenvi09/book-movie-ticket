@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Footer from '../../components/Layout/Footer/Footer';
-import Header from '../../components/Layout/Header/Header';
 import { Tabs, Rate } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { getMovieDetails } from '../../redux/actions/theaterManagerAction';
@@ -40,6 +38,7 @@ function Detail(props) {
               <img
                 style={{ width: '80%', borderRadius: '20px' }}
                 src={movieDetail.hinhAnh}
+                alt={movieDetail.tenPhim}
               />
             </div>
             <div className="col-8 text-white">
@@ -109,6 +108,7 @@ function Detail(props) {
                               <img
                                 style={{ width: '100px', height: '100px' }}
                                 src={cumRap.hinhAnh}
+                                alt={cumRap.tenCumRap}
                               />
                               <div className="ml-3">
                                 <p

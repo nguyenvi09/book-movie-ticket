@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { Suspense, lazy } from 'react';
-import Loading from './components/Layout/Loading';
 import LoadingIcon from './components/SpinnerLoading';
+import Loading from './components/Layout/Loading/Loading';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const Detail = lazy(() => import('./pages/Detail/Detail'));
