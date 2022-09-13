@@ -1,9 +1,9 @@
-import React from "react";
-import styles from "./ModalTrailer.module.scss";
-import { useSelector, useDispatch } from "react-redux";
+import React from 'react';
+import styles from './ModalTrailer.module.scss';
+import { useSelector, useDispatch } from 'react-redux';
 function ModalTrailer() {
   const { movieTrailer, displayTrailer } = useSelector(
-    (state) => state.movieManagerReducer
+    (state) => state.movieManagerReducer,
   );
 
   const dispatch = useDispatch();
@@ -25,8 +25,8 @@ function ModalTrailer() {
         className={styles.close}
         onClick={() => {
           dispatch({
-            type: "CLOSE_MODAL_TRAILER",
-            display: "none",
+            type: 'CLOSE_MODAL_TRAILER',
+            display: 'none',
           });
         }}
       >

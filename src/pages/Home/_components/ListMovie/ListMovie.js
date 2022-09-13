@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import Slider from "react-slick";
-import styleSlick from "./listMovie.module.scss";
-import { Tabs } from "antd";
-import { useSelector, useDispatch } from "react-redux";
-import Movie from "../../../../components/Layout/Movie";
+import React, { useEffect } from 'react';
+import Slider from 'react-slick';
+import styleSlick from './ListMovie.module.scss';
+import { Tabs } from 'antd';
+import { useSelector, useDispatch } from 'react-redux';
+import Movie from '../../../../components/Layout/Movie';
 import {
   SET_FILM_DANG_CHIEU,
   SET_FILM_SAP_CHIEU,
-} from "../../../../redux/contants/movie-booking";
-import { getListMovieAction } from "../../../../redux/actions/movieManagerAction";
+} from '../../../../redux/contants/movie-booking';
+import { getListMovieAction } from '../../../../redux/actions/movieManagerAction';
 
 const { TabPane } = Tabs;
 
@@ -18,8 +18,8 @@ function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      className={`${className} ${styleSlick["slick-prev"]}`}
-      style={{ ...style, display: "block" }}
+      className={`${className} ${styleSlick['slick-prev']}`}
+      style={{ ...style, display: 'block' }}
       onClick={onClick}
     ></div>
   );
@@ -29,17 +29,17 @@ function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      className={`${className} ${styleSlick["slick-prev"]}`}
-      style={{ ...style, display: "block", left: "-50px" }}
+      className={`${className} ${styleSlick['slick-prev']}`}
+      style={{ ...style, display: 'block', left: '-50px' }}
       onClick={onClick}
     ></div>
   );
 }
 const settings = {
-  className: "center variable-width",
+  className: 'center variable-width',
   centerMode: true,
   infinite: true,
-  centerPadding: "60px",
+  centerPadding: '60px',
   slidesToShow: 2,
   speed: 500,
   rows: 2,
@@ -70,8 +70,8 @@ function ListMovie() {
     <div
       style={{
         backgroundImage:
-          "url(https://static.mservice.io/img/momo-upload-api-210701105436-637607336767432408.jpg)",
-        padding: "70px 0",
+          'url(https://static.mservice.io/img/momo-upload-api-210701105436-637607336767432408.jpg)',
+        padding: '70px 0',
       }}
     >
       <div className="container">
@@ -79,11 +79,11 @@ function ListMovie() {
           defaultActiveKey="1"
           onChange={onChange}
           tabBarStyle={{
-            color: "white",
-            textAlign: "center",
+            color: 'white',
+            textAlign: 'center',
             zoom: 1.3,
-            margin: "auto",
-            marginBottom: "20px",
+            margin: 'auto',
+            marginBottom: '20px',
             fontWeight: 900,
           }}
         >
