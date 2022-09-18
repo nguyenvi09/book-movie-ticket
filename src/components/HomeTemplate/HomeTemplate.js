@@ -1,11 +1,12 @@
+import { Outlet } from 'react-router-dom';
 import Footer from '../Layout/Footer/Footer';
 import Header from '../Layout/Header/Header';
 
-const HomeTemplate = ({ children }) => {
+const HomeTemplate = () => {
   return (
     <>
       <Header />
-      {children}
+      <Outlet />
       <Footer />
     </>
   );

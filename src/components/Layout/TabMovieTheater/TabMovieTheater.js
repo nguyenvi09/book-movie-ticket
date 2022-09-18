@@ -3,11 +3,21 @@ import { Tabs } from 'antd';
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
 import styles from './TabMovieTheater.module.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { layDanhSachHeThongRap } from '../../../redux/actions/theaterManagerAction';
 const { TabPane } = Tabs;
 
-function TabMovieTheater(props) {
+function TabMovieTheater() {
+  const { cinemaSystem } = useSelector((state) => state.theaterManagerReducer);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(layDanhSachHeThongRap());
+    window.scrollTo(0, 0);
+  }, []);
   const renderTheaterSystem = () => {
-    return props.cinemaSystem?.map((theaterSystem, index) => {
+    return cinemaSystem?.map((theaterSystem, index) => {
       return (
         <TabPane
           tab={

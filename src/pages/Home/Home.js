@@ -1,20 +1,10 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import HomeTemplate from '../../components/HomeTemplate/HomeTemplate';
+import React from 'react';
 import Carousel from '../../components/Layout/Carousel/Carousel';
 import TabMovieTheater from '../../components/Layout/TabMovieTheater/TabMovieTheater';
-import { layDanhSachHeThongRap } from '../../redux/actions/theaterManagerAction';
 import ListMovie from './_components/ListMovie/ListMovie';
 import ModalTrailer from './_components/ModalTrailer/ModalTrailer';
 
-function Home(props) {
-  const { cinemaSystem } = useSelector((state) => state.theaterManagerReducer);
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(layDanhSachHeThongRap());
-    window.scrollTo(0, 0);
-  }, []);
+function Home() {
   return (
     <div>
       <div
@@ -28,7 +18,7 @@ function Home(props) {
       >
         <ModalTrailer />
       </div>
-      <HomeTemplate>
+      <div>
         <Carousel />
         <ListMovie />
         <div className="p-5">
@@ -45,10 +35,10 @@ function Home(props) {
             Lịch chiếu phim
           </h1>
           <div className="container">
-            <TabMovieTheater cinemaSystem={cinemaSystem} />
+            <TabMovieTheater />
           </div>
         </div>
-      </HomeTemplate>
+      </div>
     </div>
   );
 }
